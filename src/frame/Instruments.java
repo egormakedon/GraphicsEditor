@@ -24,8 +24,10 @@ public class Instruments {
 
         frameObj.getMenuBar().add(frameObj.getMenu());
         frameObj.getMenuBar().add(frameObj.getToolsMenu());
+        frameObj.getMenuBar().add(frameObj.getColorPanel().getColorPanel());
 
         frameObj.getFrame().setJMenuBar(frameObj.getMenuBar());
+
         frameObj.getFrame().add(frameObj.getToolBar(), BorderLayout.WEST);
         frameObj.getFrame().add(frameObj.getDrawPanel(), BorderLayout.CENTER);
     }

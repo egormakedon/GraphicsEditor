@@ -1,5 +1,6 @@
 package frame;
 
+import colorPanel.ColorPanel;
 import cursors.Cursors;
 import tools.*;
 
@@ -14,6 +15,8 @@ public class Frame {
     private JMenu menu = new JMenu("menu");
     private JMenu toolsMenu = new JMenu("tools");
     private JPanel toolBar = new JPanel();
+
+    private ColorPanel colorPanel = new ColorPanel();
 
     private Pencil pencil = new Pencil();
     private Line line = new Line();
@@ -47,6 +50,8 @@ public class Frame {
     public JMenu getMenu() { return menu; }
     public JMenu getToolsMenu() { return toolsMenu; }
     public JPanel getDrawPanel() { return drawPanel; }
+
+    public ColorPanel getColorPanel() { return colorPanel; }
 
     public Pencil getPencil() { return pencil; }
     public Line getLine() { return line; }
