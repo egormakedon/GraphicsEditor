@@ -1,3 +1,5 @@
+package cursors;
+
 import java.awt.*;
 
 public class Cursors {

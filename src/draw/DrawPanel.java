@@ -1,16 +1,20 @@
+package draw;
+
+import frame.Instruments;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class DrawPanel {
-    public void draw(Frame mainObj, Instruments instruments) {
+    public void draw(frame.Frame mainObj, Instruments instruments) {
 
         mainObj.getDrawPanel().addMouseMotionListener(new MouseMotionListener() {
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                if (mainObj.getDrawPanel().getCursor() == instruments.getCursors().getPencilCursor()) {
+                //if (mainObj.getDrawPanel().getCursor() == instruments.getCursors().getPencilCursor()) {
 
                     Point location = mainObj.getDrawPanel().getMousePosition();
 
@@ -26,7 +30,7 @@ public class DrawPanel {
                     mainObj.getDrawPanel().getGraphics().drawLine(x-1, y-1, x-1, y-1);
                     mainObj.getDrawPanel().getGraphics().drawLine(x, y-1, x, y-1);
                     mainObj.getDrawPanel().getGraphics().drawLine(x+1, y-1, x+1, y-1);
-                }
+               // }
             }
 
             @Override
