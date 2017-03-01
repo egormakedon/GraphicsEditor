@@ -1,3 +1,5 @@
+package instruments;
+
 import javax.swing.*;
 import java.awt.*;
 
