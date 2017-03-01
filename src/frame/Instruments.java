@@ -16,6 +16,12 @@ public class Instruments {
         frameObj.getToolBar().add(frameObj.getEraser().getEraserButton(), new GridBagConstraints(0, 5, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(2, 5, 0, 6), 0, 0));
 
+        frameObj.getToolsMenu().add(frameObj.getPencil().getPencilMenuItem());
+        frameObj.getToolsMenu().add(frameObj.getLine().getLineMenuItem());
+        frameObj.getToolsMenu().add(frameObj.getQuadrangle().getQuadrangleMenuItem());
+        frameObj.getToolsMenu().add(frameObj.getCircle().getCircleMenuItem());
+        frameObj.getToolsMenu().add(frameObj.getEraser().getEraserMenuItem());
+
         frameObj.getMenuBar().add(frameObj.getMenu());
         frameObj.getMenuBar().add(frameObj.getToolsMenu());
 

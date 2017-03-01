@@ -21,10 +21,10 @@ public class Cursors {
         mainCursorImage = toolkit.getImage("images/mainCursor.png");
         mainCursor = toolkit.createCustomCursor(mainCursorImage, new Point(), "mainCursor");
 
-        pencilCursorImage = toolkit.getImage("images/pencilCursor.png");
-        pencilCursor = toolkit.createCustomCursor(pencilCursorImage, new Point(), "pencilCursor");
+        pencilCursorImage = toolkit.getImage("images/pencil.png");
+        pencilCursor = toolkit.createCustomCursor(pencilCursorImage, new Point(0,30), "pencilCursor");
 
-        lineCursorImage = toolkit.getImage("images/lineCursor.png");
+        lineCursorImage = toolkit.getImage("images/line.png");
         lineCursor = toolkit.createCustomCursor(lineCursorImage, new Point(), "lineCursor");
     }
 
