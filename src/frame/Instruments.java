@@ -1,5 +1,6 @@
 package frame;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Instruments {
@@ -15,15 +16,19 @@ public class Instruments {
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(2, 5, 0, 6), 0, 0));
         frameObj.getToolBar().add(frameObj.getEraser().getEraserButton(), new GridBagConstraints(0, 5, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(2, 5, 0, 6), 0, 0));
+        frameObj.getToolBar().add(frameObj.getMagnifier().getMagnifierButton(), new GridBagConstraints(0, 6, 1, 1, 1, 1,
+                GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(2, 5, 0, 6), 0, 0));
 
-        frameObj.getToolsMenu().add(frameObj.getPencil().getPencilMenuItem());
-        frameObj.getToolsMenu().add(frameObj.getLine().getLineMenuItem());
-        frameObj.getToolsMenu().add(frameObj.getQuadrangle().getQuadrangleMenuItem());
-        frameObj.getToolsMenu().add(frameObj.getCircle().getCircleMenuItem());
-        frameObj.getToolsMenu().add(frameObj.getEraser().getEraserMenuItem());
+        JMenu toolsMenu = frameObj.getToolsMenu();
+        toolsMenu.add(frameObj.getPencil().getPencilMenuItem());
+        toolsMenu.add(frameObj.getLine().getLineMenuItem());
+        toolsMenu.add(frameObj.getQuadrangle().getQuadrangleMenuItem());
+        toolsMenu.add(frameObj.getCircle().getCircleMenuItem());
+        toolsMenu.add(frameObj.getEraser().getEraserMenuItem());
+        toolsMenu.add(frameObj.getMagnifier().getMagnifierMenuItem());
 
         frameObj.getMenuBar().add(frameObj.getMenu());
-        frameObj.getMenuBar().add(frameObj.getToolsMenu());
+        frameObj.getMenuBar().add(toolsMenu);
         frameObj.getMenuBar().add(frameObj.getColorPanel().getColorPanel());
 
         frameObj.getFrame().setJMenuBar(frameObj.getMenuBar());

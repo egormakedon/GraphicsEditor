@@ -23,6 +23,7 @@ public class Frame {
     private Quadrangle quadrangle = new Quadrangle();
     private Circle circle = new Circle();
     private Eraser eraser = new Eraser();
+    private Magnifier magnifier = new Magnifier();
 
     private Cursors cursors = new Cursors();
 
@@ -58,6 +59,7 @@ public class Frame {
     public Quadrangle getQuadrangle() { return quadrangle; }
     public Circle getCircle() { return circle; }
     public Eraser getEraser() { return eraser; }
+    public Magnifier getMagnifier() { return magnifier; }
 
     public Cursors getCursors() { return cursors; }
 }

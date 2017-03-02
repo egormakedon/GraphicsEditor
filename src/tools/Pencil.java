@@ -20,70 +20,79 @@ public class Pencil {
     }
 
     public void pencilFunction(Frame frameObj) {
+
+        PencilActionListener pencilActionListener = new PencilActionListener();
+        PencilMouseMotionListener pencilMouseMotionListener = new PencilMouseMotionListener();
+
+        pencilButton.addActionListener(pencilActionListener);
+        pencilButton.addMouseMotionListener(pencilMouseMotionListener);
+
+
+
+
+
         pencilButton.addActionListener(new ActionListener() {
+            boolean isPressed = false;
+            int x1, y1;
+
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 frameObj.getDrawPanel().setCursor(frameObj.getCursors().getPencilCursor());
-                   frameObj.getDrawPanel().addMouseMotionListener(new MouseMotionListener() {
-                       int x1 = -1, y1;
 
-                       public void mouseDragged(MouseEvent e) {
-                           int x2, y2;
+                frameObj.getDrawPanel().addMouseMotionListener(new MouseMotionListener() {
 
-                           Point location = frameObj.getDrawPanel().getMousePosition();
-                           x2 = (int) location.getX();
-                           y2 = (int) location.getY();
+                    @Override
+                    public void mouseDragged(MouseEvent e) {
+                        Point location = frameObj.getDrawPanel().getMousePosition();
 
-                           if (x1 == -1) {
-                                x1 = x2;
-                                y1 = y2;
-                           }
 
-                           frameObj.getDrawPanel().getGraphics().drawLine(x2, y2, x2, y2);
+                        if (!isPressed) {
+                            x1 = (int) location.getX();
+                            y1 = (int) location.getY();
+                        }
 
-                           x1 = x2;
-                           y1 = y2;
-                       }
+                        isPressed = true;
+                        paint(e, frameObj, x1, y1, location);
 
-                       @Override
-                       public void mouseMoved(MouseEvent e) {
+                        x1 = (int) location.getX();
+                        y1 = (int) location.getY();
+                    }
 
-                       }
-                   });
+                    @Override
+                    public void mouseMoved(MouseEvent e) {
 
-                   frameObj.getDrawPanel().addMouseListener(new MouseListener() {
-
-                       public void mouseClicked(MouseEvent e) {
-                           Point location = frameObj.getDrawPanel().getMousePosition();
-
-                           int x = (int) location.getX();
-                           int y = (int) location.getY();
-
-                           frameObj.getDrawPanel().getGraphics().drawLine(x, y, x, y);
-                       }
-
-                       @Override
-                       public void mousePressed(MouseEvent e) {
-
-                       }
-
-                       @Override
-                       public void mouseReleased(MouseEvent e) {
-
-                       }
-
-                       @Override
-                       public void mouseEntered(MouseEvent e) {
-
-                       }
-
-                       @Override
-                       public void mouseExited(MouseEvent e) {
-
-                       }
-                   });
+                    }
+                });
             }
         });
+    }
+
+    public void paint(MouseEvent e, Frame frameObj, int x1, int y1, Point location) {
+
+        int x2, y2;
+
+        x2 = (int) location.getX();
+        y2 = (int) location.getY();
+
+        frameObj.getDrawPanel().getGraphics().drawLine(x1, y1, x2, y2);
+    }
+
+    class PencilMouseMotionListener implements MouseMotionListener {
+
+        public void mouseDragged(MouseEvent e) {
+
+        }
+
+        public void mouseMoved(MouseEvent e) {
+
+        }
+    }
+
+    class PencilActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 
     public JButton getPencilButton() { return pencilButton; }
