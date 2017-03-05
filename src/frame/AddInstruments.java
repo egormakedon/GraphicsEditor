@@ -14,6 +14,8 @@ public interface AddInstruments {
         JMenuBar menuBar = frameObj.getMenuBar();
         JMenu menu = frameObj.getMenu();
         JPanel drawPanel = frameObj.getDrawPanel();
+        JColorChooser colorChooser = frameObj.getColorChooser();
+        JMenu colorChooserMenu = frameObj.getColorChooserMenu();
 
         Pencil pencil = frameObj.getPencil();
         Line line = frameObj.getLine();
@@ -42,8 +44,11 @@ public interface AddInstruments {
         toolsMenu.add(eraser.getEraserMenuItem());
         toolsMenu.add(magnifier.getMagnifierMenuItem());
 
+        colorChooserMenu.add(colorChooser);
+
         menuBar.add(menu);
         menuBar.add(toolsMenu);
+        menuBar.add(colorChooserMenu);
 
         frame.setJMenuBar(menuBar);
         frame.add(toolBar, BorderLayout.WEST);
