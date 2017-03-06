@@ -1,12 +1,12 @@
 package main;
 
-import run.Run;
+import window.Window;
 
 public class Main {
 
-    private static Run run = new Run();
+    private static Window window;
 
     public static void main(String args[]) {
-        run.runFunction();
+        window = new Window();
     }
 }

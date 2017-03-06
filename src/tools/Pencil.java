@@ -1,63 +1,81 @@
 package tools;
 
+import window.DrawManager;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
+import java.awt.event.*;
 
-public class Pencil {
+public class Pencil implements ActionListener, MouseMotionListener, MouseListener {
 
-    private JButton pencilButton = new JButton();
-    private JMenuItem pencilMenuItem = new JMenuItem("pencil");
+    private DrawManager drawManager;
+    private Cursor cursor;
+    private JPanel drawPanel;
+    boolean isPressed = false;
+    int x1, x2, y1, y2;
 
     public Pencil() {
-        pencilButton.setBackground(Color.gray);
-        pencilButton.setPreferredSize(new Dimension(32,32));
-        pencilButton.setIcon(new ImageIcon("images/pencil.png"));
+        this.drawManager = drawManager;
 
-        pencilMenuItem.setIcon(new ImageIcon("images/pencil.png"));
+        /*cursor = this.drawManager.getCursors().getPencilCursor();
+        drawPanel = this.drawManager.getDrawPanel();*/
     }
 
-    public void pencilFunction(JPanel drawPanel, Cursor cursor, JColorChooser colorChooser, JMenu colorChooserMenu) {
-        pencilButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawPanel.setCursor(cursor);
-
-                drawPanel.addMouseMotionListener(new MouseMotionListener() {
-                    @Override
-                    public void mouseDragged(MouseEvent e) {
-                        Point location = drawPanel.getMousePosition();
-                        int x = (int) location.getX();
-                        int y = (int) location.getY();
-
-                        Image img = createBufferedImage(colorChooser.getColor(), colorChooserMenu);
-                        drawPanel.getGraphics().drawImage(img,x,y,drawPanel);
-                    }
-
-                    @Override
-                    public void mouseMoved(MouseEvent e) {
-
-                    }
-                });
-            }
-        });
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        drawPanel.setCursor(cursor);
     }
 
-    public Image createBufferedImage(Color color, JMenu menu) {
-        BufferedImage bufferedImage = new BufferedImage(1,1,BufferedImage.TYPE_INT_RGB);
-        Graphics g = bufferedImage.getGraphics();
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
-        g.setColor(color);
-        menu.setForeground(color);
-        g.drawLine(0,0,0,0);
-
-        return bufferedImage;
     }
 
-    public JButton getPencilButton() { return pencilButton; }
-    public JMenuItem getPencilMenuItem() { return pencilMenuItem; }
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        isPressed = false;
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        if (!isPressed) {
+            x1 = (int) drawPanel.getMousePosition().getX();
+            y1 = (int) drawPanel.getMousePosition().getY();
+            drawPanel.getGraphics().drawLine(x1,y1,x1,y1);
+        }
+
+        else {
+            x2 = (int) drawPanel.getMousePosition().getX();
+            y2 = (int) drawPanel.getMousePosition().getY();
+            drawPanel.getGraphics().drawLine(x1,y1,x2,y2);
+        }
+
+        isPressed = true;
+        x1 = x2;
+        y1 = y2;
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+
+    public void zalupa() {
+
+    }
 }
