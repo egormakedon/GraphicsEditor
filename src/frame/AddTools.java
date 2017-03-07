@@ -66,7 +66,7 @@ public class AddTools {
         menuBar.add(toolsMenu);
         menuBar.add(colorMenu);
 
-        setItemFunction(open, saveAs, exit);
+        setItemFunction(pencil, open, saveAs, exit);
     }
 
     public JMenuItem setToolItem(String iconName, String name) {
@@ -76,7 +76,23 @@ public class AddTools {
         return item;
     }
 
-    public void setItemFunction(JMenuItem open, JMenuItem saveAs, JMenuItem exit) {
+    public void setItemFunction(JMenuItem pencil, JMenuItem open, JMenuItem saveAs, JMenuItem exit) {
+
+        pencil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.setDrawManager(drawPanel, colorChooser);
+                Pencil pencil = new Pencil(drawManager);
+                pencil.setFunction();
+            }
+        });
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(1);
+            }
+        });
 
         colorChooser.addMouseMotionListener(new MouseMotionListener() {
             @Override
@@ -87,14 +103,7 @@ public class AddTools {
             @Override
             public void mouseMoved(MouseEvent e) {
                 colorMenu.setForeground(colorChooser.getColor());
-            }
-        });
-
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
+            }           //////
         });
     }
 

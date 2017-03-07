@@ -68,12 +68,11 @@ public class Pencil {
             @Override
             public void mouseReleased(MouseEvent e) {
                 isPressed = false;
-                drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                drawPanel.setCursor(cursor);
             }
 
             @Override
