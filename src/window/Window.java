@@ -22,12 +22,13 @@ public class Window {
         JPanel toolBar = this.toolBar.getToolBar();
         JPanel drawPanel = this.drawPanel.getDrawPanel();
 
+        frame.setJMenuBar(menuBar);
+        frame.add(toolBar, BorderLayout.WEST);
+        frame.add(drawPanel, BorderLayout.CENTER);
+
         addTools = new AddTools(drawPanel);
         addTools.setBars(menuBar, toolBar);
 
-        frame.add(drawPanel);
-        frame.setJMenuBar(menuBar);
-        frame.add(toolBar, BorderLayout.WEST);
         frame.setVisible(true);
     }
 }

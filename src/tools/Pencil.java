@@ -9,8 +9,6 @@ import java.awt.image.BufferedImage;
 
 public class Pencil {
 
-    private DrawManager drawManager;
-
     private Cursor cursor;
     private JPanel drawPanel;
     private JColorChooser colorChooser;
@@ -24,8 +22,6 @@ public class Pencil {
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
         bufferedImage = drawManager.getBufferedImage();
-
-        this.drawManager = drawManager;
     }
 
     public void setFunction() {
@@ -57,11 +53,15 @@ public class Pencil {
         drawPanel.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                x1 = e.getX();
+                y1 = e.getY();
                 paint();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                x1 = e.getX();
+                y1 = e.getY();
                 paint();
             }
 
@@ -83,14 +83,18 @@ public class Pencil {
     }
 
     public void paint() {
-        Graphics2D g = (Graphics2D) bufferedImage.createGraphics();
+        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+
         g.setColor(colorChooser.getColor());
 
-        if(isPressed) {
-            g.drawLine(x1,y1,x2,y2);
+        if (isPressed) {
+            g.drawLine(x1, y1, x2, y2);
         }
 
-        Image img = bufferedImage;
-        drawPanel.getGraphics().drawImage(img,0,0,drawPanel);
+        else {
+            g.drawLine(x1, y1, x1, y1);
+        }
+
+        drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
     }
 }
