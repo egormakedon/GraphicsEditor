@@ -13,6 +13,7 @@ public class Pencil {
     private JPanel drawPanel;
     private JColorChooser colorChooser;
     private BufferedImage bufferedImage;
+    private DrawManager drawManager;
 
     private boolean isPressed = false;
     private int x1, x2, y1, y2;
@@ -22,6 +23,8 @@ public class Pencil {
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
         bufferedImage = drawManager.getBufferedImage();
+
+        this.drawManager = drawManager;
     }
 
     public void setFunction() {
@@ -86,6 +89,7 @@ public class Pencil {
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
 
         g.setColor(colorChooser.getColor());
+        g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
 
         if (isPressed) {
             g.drawLine(x1, y1, x2, y2);

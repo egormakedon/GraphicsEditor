@@ -12,6 +12,7 @@ public class Eraser {
     private Cursor cursor;
     private JPanel drawPanel;
     private BufferedImage bufferedImage;
+    private DrawManager drawManager;
 
     private boolean isPressed = false;
     private int x1, x2, y1, y2;
@@ -20,6 +21,8 @@ public class Eraser {
         cursor = drawManager.getCursors().getEraserCursor();
         drawPanel = drawManager.getDrawPanel();
         bufferedImage = drawManager.getBufferedImage();
+
+        this.drawManager = drawManager;
     }
 
     public void setFunction() {
@@ -84,6 +87,7 @@ public class Eraser {
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
 
         g.setColor(Color.white);
+        g.setStroke(new BasicStroke(drawManager.getThickness() * 20.0f));
 
         if (isPressed) {
             g.drawLine(x1, y1, x2, y2);
