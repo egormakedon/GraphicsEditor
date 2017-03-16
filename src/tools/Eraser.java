@@ -25,63 +25,58 @@ public class Eraser {
         this.drawManager = drawManager;
     }
 
-    public void setFunction() {
-
-        drawPanel.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                if (!isPressed) {
-                    x1 = e.getX();
-                    y1 = e.getY();
-                }
-
-                isPressed = true;
-                x2 = e.getX();
-                y2 = e.getY();
-
-                paint();
-
+    private MouseMotionListener mouseMotionListener = new MouseMotionListener() {
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            if (!isPressed) {
                 x1 = e.getX();
                 y1 = e.getY();
             }
 
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                drawPanel.setCursor(cursor);
-            }
-        });
+            isPressed = true;
+            x2 = e.getX();
+            y2 = e.getY();
 
-        drawPanel.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                x1 = e.getX();
-                y1 = e.getY();
-                paint();
-            }
+            paint();
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-                x1 = e.getX();
-                y1 = e.getY();
-                paint();
-            }
+            x1 = e.getX();
+            y1 = e.getY();
+        }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                isPressed = false;
-            }
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            drawPanel.setCursor(cursor);
+        }
+    };
 
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                drawPanel.setCursor(cursor);
-            }
+    private MouseListener mouseListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            x1 = e.getX();
+            y1 = e.getY();
+            paint();
+        }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
+        @Override
+        public void mousePressed(MouseEvent e) {
 
-            }
-        });
-    }
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            isPressed = false;
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            drawPanel.setCursor(cursor);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
 
     public void paint() {
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
@@ -99,4 +94,7 @@ public class Eraser {
 
         drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
     }
+
+    public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }
+    public MouseListener getMouseListener() { return mouseListener; }
 }

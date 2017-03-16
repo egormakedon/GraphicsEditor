@@ -19,6 +19,10 @@ public class DrawManager {
         bufferedImage = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
         bufferedImage.getGraphics().fillRect(0,0, (int) screenSize.getWidth(), (int) screenSize.getHeight());
 
+        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
         thickness = 1;
     }
 
@@ -29,6 +33,11 @@ public class DrawManager {
 
     public void setThickness(int thickness) {
         this.thickness = thickness;
+    }
+
+    public void removeListeners() {
+        drawPanel.removeMouseListener(drawPanel.getMouseListeners()[0]);
+        drawPanel.removeMouseMotionListener(drawPanel.getMouseMotionListeners()[0]);
     }
 
     public Cursors getCursors() { return cursors; }
