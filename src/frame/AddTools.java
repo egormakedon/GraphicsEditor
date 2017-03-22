@@ -1,9 +1,6 @@
 package frame;
 
-import tools.Eraser;
-import tools.Line;
-import tools.Pencil;
-import tools.Quadrangle;
+import tools.*;
 import window.DrawManager;
 
 import javax.imageio.ImageIO;
@@ -89,7 +86,7 @@ public class AddTools {
         menuBar.add(thicknessMenu);
 
         setMenuFunction(open, saveAs, clear, exit, thickness1x, thickness2x, thickness3x);
-        setItemFunction(pencil, line, quadrangle, eraser);
+        setItemFunction(pencil, line, quadrangle, eraser, circle, text);
     }
 
     public void setTools(JPanel toolBar) {
@@ -116,16 +113,20 @@ public class AddTools {
         toolBar.add(text, new GridBagConstraints(0, 7, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
-        setButtonFunction(pencil, line, quadrangle, eraser);
+        setButtonFunction(pencil, line, quadrangle, eraser, circle, text);
     }
 
-    public void setItemFunction(JMenuItem pencilIt, JMenuItem lineIt, JMenuItem quadrangleIt, JMenuItem eraserIt) {
+    public void setItemFunction(JMenuItem pencilIt, JMenuItem lineIt, JMenuItem quadrangleIt
+            , JMenuItem eraserIt, JMenuItem circleIt, JMenuItem textIt) {
+
         drawManager.setDrawManager(drawPanel, colorChooser);
 
         Pencil pencil = new Pencil(drawManager);
         Line line = new Line(drawManager);
         Quadrangle quadrangle = new Quadrangle(drawManager);
         Eraser eraser = new Eraser(drawManager);
+        Circle circle = new Circle(drawManager);
+        Text text = new Text(drawManager);
 
         pencilIt.addActionListener(new ActionListener() {
             @Override
@@ -157,6 +158,16 @@ public class AddTools {
             }
         });
 
+        circleIt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(circle.getMouseListener());
+                drawPanel.addMouseMotionListener(circle.getMouseMotionListener());
+            }
+        });
+
         eraserIt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -166,15 +177,29 @@ public class AddTools {
                 drawPanel.addMouseMotionListener(eraser.getMouseMotionListener());
             }
         });
+
+        textIt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(text.getMouseListener());
+                drawPanel.addMouseMotionListener(text.getMouseMotionListener());
+            }
+        });
     }
 
-    public void setButtonFunction(JButton pencilBut, JButton lineBut, JButton quadrangleBut, JButton eraserBut) {
+    public void setButtonFunction(JButton pencilBut, JButton lineBut
+            , JButton quadrangleBut, JButton eraserBut, JButton circleBut, JButton textBut) {
+
         drawManager.setDrawManager(drawPanel, colorChooser);
 
         Pencil pencil = new Pencil(drawManager);
         Line line = new Line(drawManager);
         Quadrangle quadrangle = new Quadrangle(drawManager);
         Eraser eraser = new Eraser(drawManager);
+        Circle circle = new Circle(drawManager);
+        Text text = new Text(drawManager);
 
         drawPanel.addMouseListener(pencil.getMouseListener());
         drawPanel.addMouseMotionListener(pencil.getMouseMotionListener());
@@ -209,6 +234,16 @@ public class AddTools {
             }
         });
 
+        circleBut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(circle.getMouseListener());
+                drawPanel.addMouseMotionListener(circle.getMouseMotionListener());
+            }
+        });
+
         eraserBut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -216,6 +251,16 @@ public class AddTools {
 
                 drawPanel.addMouseListener(eraser.getMouseListener());
                 drawPanel.addMouseMotionListener(eraser.getMouseMotionListener());
+            }
+        });
+
+        textBut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(text.getMouseListener());
+                drawPanel.addMouseMotionListener(text.getMouseMotionListener());
             }
         });
     }

@@ -20,12 +20,14 @@ public class Line {
     private boolean isPressed = false;
     private int x1, x2, y1, y2, x3, y3;
     private float thickness;
+    private JPanel opaquePanel = new JPanel();
 
     public Line(DrawManager drawManager) {
         cursor = drawManager.getCursors().getLineCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
         bufferedImage = drawManager.getBufferedImage();
+
 
         this.drawManager = drawManager;
     }

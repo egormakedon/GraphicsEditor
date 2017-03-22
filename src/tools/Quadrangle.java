@@ -88,17 +88,18 @@ public class Quadrangle {
         g.setColor(Color.white);
         g.setStroke(new BasicStroke(thickness));
 
-        g.fillRect(x1, y1,x3 - x1,y3 - y1);
-        g.fillRect(x1, y1,x3 - x1,y1 - y3);
-        g.fillRect(x1, y1,x3 - x1,y3 - y1);
-        g.fillRect(x1, y1,x3 - x1,y3 - y1);
-
+        g.drawRect(x1, y1, x3 - x1, y3 - y1);
+        g.drawRect(x1, y3, x3 - x1, y1 - y3);
+        g.drawRect(x3, y3, x1 - x3, y1 - y3);
+        g.drawRect(x3, y1, x1 - x3, y3 - y1);
 
         g.setColor(colorChooser.getColor());
         g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
 
-        g.fillRect(x1, y1,x2 - x1,y2 - y1);
-        g.fillRect(x1, y1,x3 - x1,y1 - y3);
+        if (x1 < x2 && y1 < y2) g.drawRect(x1, y1, x2 - x1, y2 - y1);
+        if (x1 < x2 && y1 > y2) g.drawRect(x1, y2, x2 - x1, y1 - y2);
+        if (x1 > x2 && y1 > y2) g.drawRect(x2, y2, x1 - x2, y1 - y2);
+        if (x1 > x2 && y1 < y2) g.drawRect(x2, y1, x1 - x2, y2 - y1);
 
         drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
 

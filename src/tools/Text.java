@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-public class Circle {
+public class Text {
 
     private Cursor cursor;
     private JPanel drawPanel;
@@ -17,12 +17,10 @@ public class Circle {
     private BufferedImage bufferedImage;
     private DrawManager drawManager;
 
-    private boolean isPressed = false;
-    private int x1, x2, y1, y2, x3, y3;
-    private float thickness;
+    private int x1, y1;
 
-    public Circle(DrawManager drawManager) {
-        cursor = drawManager.getCursors().getCircleCursor();
+    public Text(DrawManager drawManager) {
+        cursor = new Cursor(Cursor.TEXT_CURSOR);
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
         bufferedImage = drawManager.getBufferedImage();
@@ -33,20 +31,7 @@ public class Circle {
     private MouseMotionListener mouseMotionListener = new MouseMotionListener() {
         @Override
         public void mouseDragged(MouseEvent e) {
-            if (!isPressed) {
-                x3 = x1 = e.getX();
-                y3 = y1 = e.getY();
-                thickness = drawManager.getThickness() * 2.0f;
-            }
 
-            isPressed = true;
-            x2 = e.getX();
-            y2 = e.getY();
-
-            paint();
-
-            x3 = x2;
-            y3 = y2;
         }
 
         @Override
@@ -58,7 +43,9 @@ public class Circle {
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            x1 = e.getX();
+            y1 = e.getY() - 12;
+            paint();
         }
 
         @Override
@@ -68,7 +55,7 @@ public class Circle {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            isPressed = false;
+
         }
 
         @Override
@@ -85,25 +72,15 @@ public class Circle {
     public void paint() {
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
 
-        g.setColor(Color.white);
-        g.setStroke(new BasicStroke(thickness));
-
-        g.drawOval(x1, y1, x3 - x1, y3 - y1);
-        g.drawOval(x1, y3, x3 - x1, y1 - y3);
-        g.drawOval(x3, y3, x1 - x3, y1 - y3);
-        g.drawOval(x3, y1, x1 - x3, y3 - y1);
+        g.setColor(Color.black);
+        g.setStroke(new BasicStroke(2.0f));
+        g.drawRect(x1, y1,200,26);
 
         g.setColor(colorChooser.getColor());
-        g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
-
-        if (x1 < x2 && y1 < y2) g.drawOval(x1, y1, x2 - x1, y2 - y1);
-        if (x1 < x2 && y1 > y2) g.drawOval(x1, y2, x2 - x1, y1 - y2);
-        if (x1 > x2 && y1 > y2) g.drawOval(x2, y2, x1 - x2, y1 - y2);
-        if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
+        g.setFont(new Font("Calibri", Font.PLAIN, (int)(drawManager.getThickness() * 15.0f)));
+        g.drawString(new String("xxxx"),x1 + 2,y1 + 23);
 
         drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
-
-        thickness = drawManager.getThickness() * 2.0f;
     }
 
     public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }

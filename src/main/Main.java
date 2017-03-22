@@ -2,11 +2,15 @@ package main;
 
 import window.Window;
 
+import javax.swing.*;
+
 public class Main {
-
-    private static Window window;
-
     public static void main(String args[]) {
-        window = new Window();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Window();
+            }
+        });
     }
 }
