@@ -12,7 +12,6 @@ public class Window {
     private Frame frame = new Frame();
     private MenuBar menuBar = new MenuBar();
     private ToolBar toolBar = new ToolBar();
-    private DrawPanel drawPanel = new DrawPanel();
 
     private AddTools addTools;
 
@@ -20,7 +19,7 @@ public class Window {
         JFrame frame = this.frame.getFrame();
         JMenuBar menuBar = this.menuBar.getMenuBar();
         JPanel toolBar = this.toolBar.getToolBar();
-        JPanel drawPanel = this.drawPanel.getDrawPanel();
+        JPanel drawPanel = new NewPanel();
 
         frame.setJMenuBar(menuBar);
         frame.add(toolBar, BorderLayout.WEST);
@@ -30,5 +29,13 @@ public class Window {
         addTools.setBars(menuBar, toolBar);
 
         frame.setVisible(true);
+    }
+
+    public class NewPanel extends JPanel {
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(addTools.getDrawManager().getBufferedImage(),0,0,this);
+        }
     }
 }

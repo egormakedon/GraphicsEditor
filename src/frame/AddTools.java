@@ -369,4 +369,6 @@ public class AddTools {
             }
         });
     }
+
+    public DrawManager getDrawManager() { return drawManager; }
 }
