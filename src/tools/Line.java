@@ -18,16 +18,14 @@ public class Line {
     private DrawManager drawManager;
 
     private boolean isPressed = false;
-    private int x1, x2, y1, y2, x3, y3;
-    private float thickness;
-    private JPanel opaquePanel = new JPanel();
+    private int x1, x2, y1, y2;
+    private BufferedImage transparentBufImg;
 
     public Line(DrawManager drawManager) {
         cursor = drawManager.getCursors().getLineCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
         bufferedImage = drawManager.getBufferedImage();
-
 
         this.drawManager = drawManager;
     }
@@ -36,9 +34,8 @@ public class Line {
         @Override
         public void mouseDragged(MouseEvent e) {
             if (!isPressed) {
-                x3 = x1 = e.getX();
-                y3 = y1 = e.getY();
-                thickness = drawManager.getThickness() * 2.0f;
+                x1 = e.getX();
+                y1 = e.getY();
             }
 
             isPressed = true;
@@ -46,9 +43,6 @@ public class Line {
             y2 = e.getY();
 
             paint();
-
-            x3 = x2;
-            y3 = y2;
         }
 
         @Override
@@ -65,11 +59,18 @@ public class Line {
 
         @Override
         public void mousePressed(MouseEvent e) {
-
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
+            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            g.setColor(colorChooser.getColor());
+            g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
+            g.drawLine(x1, y1, x2, y2);
+            drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+
             isPressed = false;
         }
 
@@ -85,21 +86,15 @@ public class Line {
     };
 
     public void paint() {
-        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+        transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
 
-        g.setColor(Color.white);
-        g.setStroke(new BasicStroke(thickness));
-
-        g.drawLine(x1, y1, x3, y3);
+        Graphics2D g = (Graphics2D) transparentBufImg.getGraphics();
 
         g.setColor(colorChooser.getColor());
         g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
-
         g.drawLine(x1, y1, x2, y2);
 
-        drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
-
-        thickness = drawManager.getThickness() * 2.0f;
+        drawPanel.getGraphics().drawImage(transparentBufImg,0,0, drawPanel);
     }
 
     public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }
