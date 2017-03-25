@@ -23,12 +23,14 @@ public class AddTools {
     private JMenu colorMenu = new JMenu("color");
     private JColorChooser colorChooser = new JColorChooser();
     private JMenu thicknessMenu = new JMenu("thickness 1x");
+    private JMenu selectionMenu = new JMenu("selection");
 
     public AddTools(JPanel drawPanel) {
         menu.setIcon(new ImageIcon("images/menu.png"));
         toolsMenu.setIcon(new ImageIcon("images/toolsMenu.png"));
         colorMenu.setIcon(new ImageIcon("images/colorMenu.png"));
         thicknessMenu.setIcon(new ImageIcon("images/thicknessMenu.png"));
+        selectionMenu.setIcon(new ImageIcon("images/selection1.png"));
 
         colorMenu.setForeground(Color.black);
         colorChooser.setColor(Color.black);
@@ -59,6 +61,9 @@ public class AddTools {
         JMenuItem thickness2x = setToolItem("","2x");
         JMenuItem thickness3x = setToolItem("","3x");
 
+        JMenuItem selection1 = setToolItem("images/selection1.png", "rectangle");
+        JMenuItem selection2 = setToolItem("images/selection2.png", "arbitrary");
+
         menu.add(open);
         menu.add(saveAs);
         menu.addSeparator();
@@ -80,13 +85,17 @@ public class AddTools {
         thicknessMenu.add(thickness2x);
         thicknessMenu.add(thickness3x);
 
+        selectionMenu.add(selection1);
+        selectionMenu.add(selection2);
+
         menuBar.add(menu);
         menuBar.add(toolsMenu);
         menuBar.add(colorMenu);
         menuBar.add(thicknessMenu);
+        menuBar.add(selectionMenu);
 
         setMenuFunction(open, saveAs, clear, exit, thickness1x, thickness2x, thickness3x);
-        setItemFunction(pencil, line, quadrangle, eraser, circle, text);
+        setItemFunction(pencil, line, quadrangle, eraser, circle, text, selection1, selection2);
     }
 
     public void setTools(JPanel toolBar) {
@@ -117,7 +126,7 @@ public class AddTools {
     }
 
     public void setItemFunction(JMenuItem pencilIt, JMenuItem lineIt, JMenuItem quadrangleIt
-            , JMenuItem eraserIt, JMenuItem circleIt, JMenuItem textIt) {
+            , JMenuItem eraserIt, JMenuItem circleIt, JMenuItem textIt, JMenuItem selection1, JMenuItem selection2) {
 
         drawManager.setDrawManager(drawPanel, colorChooser);
 
@@ -127,6 +136,8 @@ public class AddTools {
         Eraser eraser = new Eraser(drawManager);
         Circle circle = new Circle(drawManager);
         Text text = new Text(drawManager);
+
+        Selection selection = new Selection(drawManager);
 
         pencilIt.addActionListener(new ActionListener() {
             @Override
@@ -185,6 +196,26 @@ public class AddTools {
 
                 drawPanel.addMouseListener(text.getMouseListener());
                 drawPanel.addMouseMotionListener(text.getMouseMotionListener());
+            }
+        });
+
+        selection1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(selection.getMouseListener1());
+                drawPanel.addMouseMotionListener(selection.getMouseMotionListener1());
+            }
+        });
+
+        selection2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(selection.getMouseListener2());
+                drawPanel.addMouseMotionListener(selection.getMouseMotionListener2());
             }
         });
     }
