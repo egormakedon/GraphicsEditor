@@ -4,9 +4,7 @@ import window.DrawManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
 public class Selection {
@@ -17,7 +15,10 @@ public class Selection {
 
     private boolean isPressed = false;
     private int x1, x2, y1, y2, x3, y3;
+    private int MinX, MinY, MaxX, MaxY;
+    private int MouseX, MouseY;
     private BufferedImage transparentBufImg;
+    private BufferedImage copyBufImg;
 
     public Selection(DrawManager drawManager) {
         cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
@@ -42,6 +43,8 @@ public class Selection {
 
         @Override
         public void mouseMoved(MouseEvent e) {
+            MouseX = e.getX();
+            MouseY = e.getY();
             drawPanel.setCursor(cursor);
         }
     };
@@ -56,10 +59,17 @@ public class Selection {
         public void mousePressed(MouseEvent e) {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+            drawPanel.removeKeyListener(copyListener);
+            drawPanel.removeKeyListener(pasteListener);
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
+            drawPanel.requestFocus();
+            drawPanel.addKeyListener(copyListener);
+            drawPanel.addKeyListener(pasteListener);
+
             isPressed = false;
         }
 
@@ -82,13 +92,18 @@ public class Selection {
                 transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
                 transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
 
-                x3 = x1 = e.getX();
-                y3 = y1 = e.getY();
+                MinX = MaxX = x3 = x1 = e.getX();
+                MinY = MaxY = y3 = y1 = e.getY();
             }
 
             isPressed = true;
             x2 = e.getX();
             y2 = e.getY();
+
+            if (MinX > x2) MinX = x2;
+            if (MaxX < x2) MaxX = x2;
+            if (MinY > y2) MinY = y2;
+            if (MaxY < y2) MaxY = y2;
 
             paint2();
 
@@ -98,6 +113,8 @@ public class Selection {
 
         @Override
         public void mouseMoved(MouseEvent e) {
+            MouseX = e.getX();
+            MouseY = e.getY();
             drawPanel.setCursor(cursor);
         }
     };
@@ -110,7 +127,8 @@ public class Selection {
 
         @Override
         public void mousePressed(MouseEvent e) {
-
+            drawPanel.removeKeyListener(copyListenerSecond);
+            drawPanel.removeKeyListener(pasteListener);
         }
 
         @Override
@@ -120,6 +138,10 @@ public class Selection {
             g.setStroke(new BasicStroke(1.0f));
             g.drawLine(x1, y1, x3, y3);
             drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
+
+            drawPanel.requestFocus();
+            drawPanel.addKeyListener(copyListenerSecond);
+            drawPanel.addKeyListener(pasteListener);
 
             isPressed = false;
         }
@@ -165,6 +187,59 @@ public class Selection {
 
         drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
     }
+
+    private KeyListener copyListener = new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            super.keyPressed(e);
+            if (KeyEvent.VK_C == e.getKeyCode())
+            {
+                if (x1 < x2 && y1 < y2)
+                {
+                    copyBufImg = new BufferedImage(x2 - x1,y2 - y1, BufferedImage.TYPE_INT_RGB);
+                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x1, y1, x2 - x1, y2 - y1),0,0, drawPanel);
+                }
+
+                if (x1 < x2 && y1 > y2) {
+                    copyBufImg = new BufferedImage(x2 - x1,y1 - y2, BufferedImage.TYPE_INT_RGB);
+                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x1, y2, x2 - x1, y1 - y2),0,0, drawPanel);
+                }
+
+                if (x1 > x2 && y1 > y2) {
+                    copyBufImg = new BufferedImage(x1 - x2,y1 - y2, BufferedImage.TYPE_INT_RGB);
+                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x2, y2, x1 - x2, y1 - y2),0,0, drawPanel);
+                }
+
+                if (x1 > x2 && y1 < y2) {
+                    copyBufImg = new BufferedImage(x1 - x2,y2 - y1, BufferedImage.TYPE_INT_RGB);
+                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x2, y1, x1 - x2, y2 - y1),0,0, drawPanel);
+                }
+            }
+        }
+    };
+
+    private KeyListener copyListenerSecond = new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            super.keyPressed(e);
+            if (KeyEvent.VK_C == e.getKeyCode()) {
+                copyBufImg = new BufferedImage(MaxX - MinX,MaxY - MinY, BufferedImage.TYPE_INT_RGB);
+                copyBufImg.getGraphics().drawImage(
+                        bufferedImage.getSubimage(MinX, MinY, MaxX - MinX, MaxY - MinY),0,0, drawPanel);
+            }
+        }
+    };
+
+    private KeyListener pasteListener = new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            super.keyPressed(e);
+            if (KeyEvent.VK_V == e.getKeyCode()) {
+                bufferedImage.getGraphics().drawImage(copyBufImg, MouseX, MouseY, drawPanel);
+                drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            }
+        }
+    };
 
     public MouseMotionListener getMouseMotionListener1() { return mouseMotionListener1; }
     public MouseListener getMouseListener1() { return mouseListener1; }

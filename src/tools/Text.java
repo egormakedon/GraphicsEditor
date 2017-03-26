@@ -91,15 +91,75 @@ public class Text {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
 
-            if ((drawManager.getThickness() == 1 && str.length() < 14) ||
-                    (drawManager.getThickness() == 2 && str.length() < 12) ||
-                    (drawManager.getThickness() == 3 && str.length() < 10)) {
+            if ((drawManager.getThickness() == 1 && str.length() >= 16) ||
+                    (drawManager.getThickness() == 2 && str.length() >= 14) ||
+                    (drawManager.getThickness() == 3 && str.length() >= 12)) {
 
-                bufferedImage.getGraphics().drawImage(secondBufferedImg,0,0, drawPanel);
-                Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+                if (e.getKeyText(e.getKeyCode()) == "Backspace") {
+                    bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
+                    Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
 
-                g.setColor(colorChooser.getColor());
-                g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+                    str = str.substring(0, str.length() - 1);
+
+                    g.setColor(colorChooser.getColor());
+                    g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+                    g.drawString(str, x1 + 4, y1 + 19);
+
+                    transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+                    g = (Graphics2D) transparentBufImg.getGraphics();
+                    g.setColor(Color.black);
+                    g.setStroke(new BasicStroke(1.0f));
+                    g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
+
+                    drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
+
+                    return;
+                }
+            }
+
+            bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
+            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+
+            g.setColor(colorChooser.getColor());
+            g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+
+            if (e.getKeyText(e.getKeyCode()) == "Space") {
+                str += " ";
+
+                g.drawString(str, x1 + 4, y1 + 19);
+
+                transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+                g = (Graphics2D) transparentBufImg.getGraphics();
+                g.setColor(Color.black);
+                g.setStroke(new BasicStroke(1.0f));
+                g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
+
+                drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
+
+                return;
+            }
+
+            if (e.getKeyText(e.getKeyCode()) == "Backspace" && str.length() <= 0) return;
+            if (e.getKeyText(e.getKeyCode()) == "Backspace" && str.length() > 0) {
+                str = str.substring(0, str.length() - 1);
+
+                g.drawString(str, x1 + 4, y1 + 19);
+
+                transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+                g = (Graphics2D) transparentBufImg.getGraphics();
+                g.setColor(Color.black);
+                g.setStroke(new BasicStroke(1.0f));
+                g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
+
+                drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
+
+                return;
+            }
+
+            if ((drawManager.getThickness() == 1 && str.length() < 16) ||
+                    (drawManager.getThickness() == 2 && str.length() < 14) ||
+                    (drawManager.getThickness() == 3 && str.length() < 12)) {
+
                 str += e.getKeyText(e.getKeyCode());
                 g.drawString(str, x1 + 4, y1 + 19);
 
