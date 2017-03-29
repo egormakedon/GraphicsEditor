@@ -19,6 +19,8 @@ public class Circle {
 
     private boolean isPressed = false;
     private int x1, x2, y1, y2;
+    private float thickness;
+    private Color color;
     private BufferedImage transparentBufImg;
 
     public Circle(DrawManager drawManager) {
@@ -66,8 +68,8 @@ public class Circle {
         @Override
         public void mouseReleased(MouseEvent e) {
             Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
-            g.setColor(colorChooser.getColor());
-            g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
+            g.setColor(color);
+            g.setStroke(new BasicStroke(thickness));
 
             if (x1 < x2 && y1 < y2) g.drawOval(x1, y1, x2 - x1, y2 - y1);
             if (x1 < x2 && y1 > y2) g.drawOval(x1, y2, x2 - x1, y1 - y2);
@@ -104,6 +106,9 @@ public class Circle {
         if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
 
         drawPanel.getGraphics().drawImage(transparentBufImg,0,0, drawPanel);
+
+        thickness = drawManager.getThickness() * 2.0f;
+        color = colorChooser.getColor();
     }
 
     public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }

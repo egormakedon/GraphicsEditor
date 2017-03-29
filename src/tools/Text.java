@@ -82,7 +82,15 @@ public class Text {
 
         @Override
         public void mouseExited(MouseEvent e) {
+            bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
 
+            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            g.setColor(colorChooser.getColor());
+            g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+            g.drawString(str, x1 + 4, y1 + 19);
+            drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+
+            drawPanel.removeKeyListener(keyListener);
         }
     };
 
@@ -91,85 +99,69 @@ public class Text {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
 
-            if ((drawManager.getThickness() == 1 && str.length() >= 16) ||
-                    (drawManager.getThickness() == 2 && str.length() >= 14) ||
-                    (drawManager.getThickness() == 3 && str.length() >= 12)) {
+            bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
+            transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
 
-                if (e.getKeyText(e.getKeyCode()) == "Backspace") {
-                    bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
-                    Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            Graphics2D g = (Graphics2D) transparentBufImg.getGraphics();
+            g.setColor(Color.black);
+            g.setStroke(new BasicStroke(1.0f));
+            g.drawRect(x1, y1,200,19);
 
+            if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                if (str.length() > 0) {
                     str = str.substring(0, str.length() - 1);
 
+                    g = (Graphics2D) transparentBufImg.getGraphics();
                     g.setColor(colorChooser.getColor());
                     g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
                     g.drawString(str, x1 + 4, y1 + 19);
-
-                    transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
-                    g = (Graphics2D) transparentBufImg.getGraphics();
-                    g.setColor(Color.black);
-                    g.setStroke(new BasicStroke(1.0f));
-                    g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
-
                     drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
 
                     return;
                 }
             }
 
-            bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
-            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                g = (Graphics2D) bufferedImage.getGraphics();
+                g.setColor(colorChooser.getColor());
+                g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+                g.drawString(str, x1 + 4, y1 + 19);
+                drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
 
-            g.setColor(colorChooser.getColor());
-            g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+                drawPanel.removeKeyListener(keyListener);
 
-            if (e.getKeyText(e.getKeyCode()) == "Space") {
+                return;
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 str += " ";
 
-                g.drawString(str, x1 + 4, y1 + 19);
-
-                transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
                 g = (Graphics2D) transparentBufImg.getGraphics();
-                g.setColor(Color.black);
-                g.setStroke(new BasicStroke(1.0f));
-                g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
-
+                g.setColor(colorChooser.getColor());
+                g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+                g.drawString(str, x1 + 4, y1 + 19);
                 drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
 
                 return;
             }
 
-            if (e.getKeyText(e.getKeyCode()) == "Backspace" && str.length() <= 0) return;
-            if (e.getKeyText(e.getKeyCode()) == "Backspace" && str.length() > 0) {
-                str = str.substring(0, str.length() - 1);
+            if ((e.getKeyCode() >= KeyEvent.VK_A && e.getKeyCode() <= KeyEvent.VK_Z) ||
+                    (e.getKeyCode() >= KeyEvent.VK_0 && e.getKeyCode() <= KeyEvent.VK_9)) {
 
-                g.drawString(str, x1 + 4, y1 + 19);
+                if ((drawManager.getThickness() == 1 && str.length() < 16) ||
+                        (drawManager.getThickness() == 2 && str.length() < 14) ||
+                        (drawManager.getThickness() == 3 && str.length() < 12)) {
 
-                transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
-                g = (Graphics2D) transparentBufImg.getGraphics();
-                g.setColor(Color.black);
-                g.setStroke(new BasicStroke(1.0f));
-                g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
+                    str += e.getKeyText(e.getKeyCode());
 
-                drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
+                    g = (Graphics2D) transparentBufImg.getGraphics();
+                    g.setColor(colorChooser.getColor());
+                    g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
+                    g.drawString(str, x1 + 4, y1 + 19);
+                    drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
 
-                return;
-            }
-
-            if ((drawManager.getThickness() == 1 && str.length() < 16) ||
-                    (drawManager.getThickness() == 2 && str.length() < 14) ||
-                    (drawManager.getThickness() == 3 && str.length() < 12)) {
-
-                str += e.getKeyText(e.getKeyCode());
-                g.drawString(str, x1 + 4, y1 + 19);
-
-                transparentBufImg.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
-                g = (Graphics2D) transparentBufImg.getGraphics();
-                g.setColor(Color.black);
-                g.setStroke(new BasicStroke(1.0f));
-                g.drawRect(x1, y1, 200, 18 + drawManager.getThickness());
-
-                drawPanel.getGraphics().drawImage(transparentBufImg, 0, 0, drawPanel);
+                    return;
+                }
             }
         }
     };

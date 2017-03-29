@@ -80,7 +80,8 @@ public class Selection {
 
         @Override
         public void mouseExited(MouseEvent e) {
-
+            drawPanel.removeKeyListener(copyListener);
+            drawPanel.removeKeyListener(pasteListener);
         }
     };
 
@@ -88,10 +89,6 @@ public class Selection {
         @Override
         public void mouseDragged(MouseEvent e) {
             if (!isPressed) {
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
-                transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
-
                 MinX = MaxX = x3 = x1 = e.getX();
                 MinY = MaxY = y3 = y1 = e.getY();
             }
@@ -127,6 +124,10 @@ public class Selection {
 
         @Override
         public void mousePressed(MouseEvent e) {
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
+            transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+
             drawPanel.removeKeyListener(copyListenerSecond);
             drawPanel.removeKeyListener(pasteListener);
         }
@@ -153,7 +154,8 @@ public class Selection {
 
         @Override
         public void mouseExited(MouseEvent e) {
-
+            drawPanel.removeKeyListener(copyListenerSecond);
+            drawPanel.removeKeyListener(pasteListener);
         }
     };
 
@@ -192,8 +194,7 @@ public class Selection {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
-            if (KeyEvent.VK_C == e.getKeyCode())
-            {
+            if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
                 if (x1 < x2 && y1 < y2)
                 {
                     copyBufImg = new BufferedImage(x2 - x1,y2 - y1, BufferedImage.TYPE_INT_RGB);
@@ -222,8 +223,11 @@ public class Selection {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
-            if (KeyEvent.VK_C == e.getKeyCode()) {
-                copyBufImg = new BufferedImage(MaxX - MinX,MaxY - MinY, BufferedImage.TYPE_INT_RGB);
+            if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                if (MaxX - MinX > 0 && MaxY - MinY > 0) {
+                    copyBufImg = new BufferedImage(MaxX - MinX,MaxY - MinY, BufferedImage.TYPE_INT_RGB);
+                }
+
                 copyBufImg.getGraphics().drawImage(
                         bufferedImage.getSubimage(MinX, MinY, MaxX - MinX, MaxY - MinY),0,0, drawPanel);
             }
@@ -234,7 +238,7 @@ public class Selection {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
-            if (KeyEvent.VK_V == e.getKeyCode()) {
+            if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
                 bufferedImage.getGraphics().drawImage(copyBufImg, MouseX, MouseY, drawPanel);
                 drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
             }
