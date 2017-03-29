@@ -40,6 +40,10 @@ public class DrawManager {
         drawPanel.removeMouseMotionListener(drawPanel.getMouseMotionListeners()[0]);
     }
 
+    public void setNewBuf(BufferedImage buf) {
+        this.bufferedImage = buf;
+    }
+
     public Cursors getCursors() { return cursors; }
     public JPanel getDrawPanel() { return drawPanel; }
     public JColorChooser getColorChooser() { return colorChooser; }

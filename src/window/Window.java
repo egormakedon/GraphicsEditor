@@ -20,10 +20,11 @@ public class Window {
         JMenuBar menuBar = this.menuBar.getMenuBar();
         JPanel toolBar = this.toolBar.getToolBar();
         JPanel drawPanel = new NewPanel();
+        JScrollPane scrollPane = new JScrollPane(drawPanel);
 
         frame.setJMenuBar(menuBar);
         frame.add(toolBar, BorderLayout.WEST);
-        frame.add(drawPanel, BorderLayout.CENTER);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
         addTools = new AddTools(drawPanel);
         addTools.setBars(menuBar, toolBar);

@@ -35,7 +35,7 @@ public class Cursors {
         quadrangleCursor = toolkit.createCustomCursor(quadrangleCursorImage, new Point(0,0), "quadrangleCursor");
         circleCursor = toolkit.createCustomCursor(circleCursorImage, new Point(0,0), "circleCursor");
         eraserCursor = toolkit.createCustomCursor(eraserCursorImage, new Point(5,30), "eraserCursor");
-        magnifierCursor = toolkit.createCustomCursor(magnifierCursorImage, new Point(0,30), "magnifierCursor");
+        magnifierCursor = toolkit.createCustomCursor(magnifierCursorImage, new Point(0,0), "magnifierCursor");
     }
 
     public Cursor getPencilCursor() { return pencilCursor; }

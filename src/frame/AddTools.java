@@ -95,7 +95,7 @@ public class AddTools {
         menuBar.add(selectionMenu);
 
         setMenuFunction(open, saveAs, clear, exit, thickness1x, thickness2x, thickness3x);
-        setItemFunction(pencil, line, quadrangle, eraser, circle, text, selection1, selection2);
+        setItemFunction(pencil, line, quadrangle, eraser, circle, text, selection1, selection2, magnifier);
     }
 
     public void setTools(JPanel toolBar) {
@@ -122,11 +122,12 @@ public class AddTools {
         toolBar.add(text, new GridBagConstraints(0, 7, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
-        setButtonFunction(pencil, line, quadrangle, eraser, circle, text);
+        setButtonFunction(pencil, line, quadrangle, eraser, circle, text, magnifier);
     }
 
     public void setItemFunction(JMenuItem pencilIt, JMenuItem lineIt, JMenuItem quadrangleIt
-            , JMenuItem eraserIt, JMenuItem circleIt, JMenuItem textIt, JMenuItem selection1, JMenuItem selection2) {
+            , JMenuItem eraserIt, JMenuItem circleIt, JMenuItem textIt,
+                                JMenuItem selection1, JMenuItem selection2, JMenuItem magnifierIt) {
 
         drawManager.setDrawManager(drawPanel, colorChooser);
 
@@ -136,8 +137,8 @@ public class AddTools {
         Eraser eraser = new Eraser(drawManager);
         Circle circle = new Circle(drawManager);
         Text text = new Text(drawManager);
-
         Selection selection = new Selection(drawManager);
+        Magnifier magnifier = new Magnifier(drawManager);
 
         pencilIt.addActionListener(new ActionListener() {
             @Override
@@ -189,6 +190,16 @@ public class AddTools {
             }
         });
 
+        magnifierIt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(magnifier.getMouseListener());
+                drawPanel.addMouseMotionListener(magnifier.getMouseMotionListener());
+            }
+        });
+
         textIt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -221,7 +232,7 @@ public class AddTools {
     }
 
     public void setButtonFunction(JButton pencilBut, JButton lineBut
-            , JButton quadrangleBut, JButton eraserBut, JButton circleBut, JButton textBut) {
+            , JButton quadrangleBut, JButton eraserBut, JButton circleBut, JButton textBut, JButton magnifierBut) {
 
         drawManager.setDrawManager(drawPanel, colorChooser);
 
@@ -231,6 +242,7 @@ public class AddTools {
         Eraser eraser = new Eraser(drawManager);
         Circle circle = new Circle(drawManager);
         Text text = new Text(drawManager);
+        Magnifier magnifier = new Magnifier(drawManager);
 
         drawPanel.addMouseListener(pencil.getMouseListener());
         drawPanel.addMouseMotionListener(pencil.getMouseMotionListener());
@@ -285,6 +297,16 @@ public class AddTools {
             }
         });
 
+        magnifierBut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drawManager.removeListeners();
+
+                drawPanel.addMouseListener(magnifier.getMouseListener());
+                drawPanel.addMouseMotionListener(magnifier.getMouseMotionListener());
+            }
+        });
+
         textBut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -325,6 +347,10 @@ public class AddTools {
                     File file = fileChooser.getSelectedFile();
                     try {
                         BufferedImage img = ImageIO.read(file);
+
+                        drawPanel.setSize(new Dimension(img.getWidth(), img.getHeight()));
+                        drawPanel.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
+
                         Graphics g = drawManager.getBufferedImage().getGraphics();
                         g.drawImage(img,0, 0, drawPanel);
                         drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
