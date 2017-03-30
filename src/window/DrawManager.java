@@ -13,6 +13,7 @@ public class DrawManager {
     private JColorChooser colorChooser;
     private BufferedImage bufferedImage;
     private int thickness;
+    private double zoom = 1;
 
     public DrawManager() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -40,8 +41,44 @@ public class DrawManager {
         drawPanel.removeMouseMotionListener(drawPanel.getMouseMotionListeners()[0]);
     }
 
-    public void setNewBuf(BufferedImage buf) {
-        this.bufferedImage = buf;
+    public void setNewBuf(BufferedImage buf, double zoom) {
+       if (zoom == 1) {
+           bufferedImage = scale(buf,1 / this.zoom);
+           this.zoom = zoom;
+           return;
+       }
+
+        if (zoom == 2) {
+            bufferedImage = scale(buf,1 / this.zoom);
+            bufferedImage = scale(buf, zoom);
+            this.zoom = zoom;
+            return;
+        }
+
+        if (zoom == 3) {
+            bufferedImage = scale(buf,1 / this.zoom);
+            bufferedImage = scale(buf, zoom);
+            this.zoom = zoom;
+            return;
+        }
+    }
+
+    public BufferedImage scale(BufferedImage input, double coefficient) {
+        int inW = input.getWidth();
+        int inH = input.getHeight();
+        int outW = (int) (inW * coefficient);
+        int outH = (int) (inH * coefficient);
+
+        BufferedImage res = new BufferedImage(outW, outH, BufferedImage.TYPE_INT_RGB);
+
+        for (int x = 0; x < outW; x++) {
+            for (int y = 0; y < outH; y++) {
+                int cl = input.getRGB(x * inW / outW, y * inH / outH);
+                res.setRGB(x, y, cl);
+            }
+        }
+
+        return res;
     }
 
     public Cursors getCursors() { return cursors; }

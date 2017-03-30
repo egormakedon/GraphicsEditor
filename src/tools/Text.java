@@ -12,11 +12,10 @@ public class Text {
     private Cursor cursor;
     private JPanel drawPanel;
     private JColorChooser colorChooser;
-    private BufferedImage bufferedImage;
     private DrawManager drawManager;
 
     private int x1, y1;
-    private String str;
+    private String str = "";
     private BufferedImage transparentBufImg;
     private BufferedImage secondBufferedImg;
 
@@ -24,7 +23,6 @@ public class Text {
         cursor = new Cursor(Cursor.TEXT_CURSOR);
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
-        bufferedImage = drawManager.getBufferedImage();
 
         this.drawManager = drawManager;
     }
@@ -51,10 +49,10 @@ public class Text {
         public void mousePressed(MouseEvent e) {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
-            transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            transparentBufImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
             secondBufferedImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
-            secondBufferedImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            secondBufferedImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
             x1 = e.getX();
             y1 = e.getY();
@@ -82,13 +80,13 @@ public class Text {
 
         @Override
         public void mouseExited(MouseEvent e) {
-            bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
+            drawManager.getBufferedImage().getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
 
-            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            Graphics2D g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
             g.setColor(colorChooser.getColor());
             g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
-            g.drawString(str, x1 + 4, y1 + 19);
-            drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+            if (str.length() > 0) g.drawString(str, x1 + 4, y1 + 19);
+            drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(), 0, 0, drawPanel);
 
             drawPanel.removeKeyListener(keyListener);
         }
@@ -99,8 +97,8 @@ public class Text {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
 
-            bufferedImage.getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
-            transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            drawManager.getBufferedImage().getGraphics().drawImage(secondBufferedImg, 0, 0, drawPanel);
+            transparentBufImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
             Graphics2D g = (Graphics2D) transparentBufImg.getGraphics();
             g.setColor(Color.black);
@@ -122,11 +120,11 @@ public class Text {
             }
 
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                g = (Graphics2D) bufferedImage.getGraphics();
+                g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
                 g.setColor(colorChooser.getColor());
                 g.setFont(new Font("", Font.PLAIN, drawManager.getThickness() * 3 + 15));
                 g.drawString(str, x1 + 4, y1 + 19);
-                drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+                drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(), 0, 0, drawPanel);
 
                 drawPanel.removeKeyListener(keyListener);
 

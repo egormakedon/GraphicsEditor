@@ -12,12 +12,10 @@ public class Magnifier {
     private Cursor cursor;
     private JPanel drawPanel;
     private DrawManager drawManager;
-    private BufferedImage bufferedImage;
 
     public Magnifier(DrawManager drawManager) {
         cursor = drawManager.getCursors().getMagnifierCursor();
         drawPanel = drawManager.getDrawPanel();
-        bufferedImage = drawManager.getBufferedImage();
 
         this.drawManager = drawManager;
     }
@@ -42,7 +40,7 @@ public class Magnifier {
 
         @Override
         public void mousePressed(MouseEvent e) {
-            drawManager.setNewBuf(scale(bufferedImage, drawManager.getThickness()));
+            drawManager.setNewBuf(drawManager.getBufferedImage(), drawManager.getThickness());
 
             drawPanel.setSize(new Dimension(drawManager.getBufferedImage().getWidth(), drawManager.getBufferedImage().getHeight()));
             drawPanel.setPreferredSize(new Dimension(drawManager.getBufferedImage().getWidth(), drawManager.getBufferedImage().getHeight()));
@@ -65,24 +63,6 @@ public class Magnifier {
 
         }
     };
-
-    public BufferedImage scale(BufferedImage input, double coefficient) {
-        int inW = input.getWidth();
-        int inH = input.getHeight();
-        int outW = (int) (inW * coefficient);
-        int outH = (int) (inH * coefficient);
-
-        BufferedImage res = new BufferedImage(outW, outH, BufferedImage.TYPE_INT_RGB);
-
-        for (int x = 0; x < outW; x++) {
-            for (int y = 0; y < outH; y++) {
-                int cl = input.getRGB(x * inW / outW, y * inH / outH);
-                res.setRGB(x, y, cl);
-            }
-        }
-
-        return res;
-    }
 
     public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }
     public MouseListener getMouseListener() { return mouseListener; }

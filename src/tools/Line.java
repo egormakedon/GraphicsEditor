@@ -14,7 +14,6 @@ public class Line {
     private Cursor cursor;
     private JPanel drawPanel;
     private JColorChooser colorChooser;
-    private BufferedImage bufferedImage;
     private DrawManager drawManager;
 
     private boolean isPressed = false;
@@ -27,7 +26,6 @@ public class Line {
         cursor = drawManager.getCursors().getLineCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
-        bufferedImage = drawManager.getBufferedImage();
 
         this.drawManager = drawManager;
     }
@@ -67,11 +65,11 @@ public class Line {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            Graphics2D g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
             g.setColor(color);
             g.setStroke(new BasicStroke(thickness));
             g.drawLine(x1, y1, x2, y2);
-            drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
             isPressed = false;
         }
@@ -88,7 +86,7 @@ public class Line {
     };
 
     public void paint() {
-        transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+        transparentBufImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
         Graphics2D g = (Graphics2D) transparentBufImg.getGraphics();
 

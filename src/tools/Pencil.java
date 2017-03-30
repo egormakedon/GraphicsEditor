@@ -12,7 +12,6 @@ public class Pencil {
     private Cursor cursor;
     private JPanel drawPanel;
     private JColorChooser colorChooser;
-    private BufferedImage bufferedImage;
     private DrawManager drawManager;
 
     private boolean isPressed = false;
@@ -22,7 +21,6 @@ public class Pencil {
         cursor = drawManager.getCursors().getPencilCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
-        bufferedImage = drawManager.getBufferedImage();
 
         this.drawManager = drawManager;
     }
@@ -81,7 +79,7 @@ public class Pencil {
     };
 
     public void paint() {
-        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+        Graphics2D g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
 
         g.setColor(colorChooser.getColor());
         g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
@@ -92,7 +90,7 @@ public class Pencil {
             g.drawLine(x1, y1, x1, y1);
         }
 
-        drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+        drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(), 0, 0, drawPanel);
     }
 
     public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }

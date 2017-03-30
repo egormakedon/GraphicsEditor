@@ -6,24 +6,29 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Selection {
 
     private Cursor cursor;
     private JPanel drawPanel;
-    private BufferedImage bufferedImage;
 
     private boolean isPressed = false;
     private int x1, x2, y1, y2, x3, y3;
-    private int MinX, MinY, MaxX, MaxY;
     private int MouseX, MouseY;
     private BufferedImage transparentBufImg;
     private BufferedImage copyBufImg;
+    private DrawManager drawManager;
+
+    private ArrayList arrayListForX;
+    private ArrayList arrayListForY;
+    private Polygon polygon;
 
     public Selection(DrawManager drawManager) {
         cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
         drawPanel = drawManager.getDrawPanel();
-        bufferedImage = drawManager.getBufferedImage();
+
+        this.drawManager = drawManager;
     }
 
     private MouseMotionListener mouseMotionListener1 = new MouseMotionListener() {
@@ -89,18 +94,16 @@ public class Selection {
         @Override
         public void mouseDragged(MouseEvent e) {
             if (!isPressed) {
-                MinX = MaxX = x3 = x1 = e.getX();
-                MinY = MaxY = y3 = y1 = e.getY();
+                x3 = x1 = e.getX();
+                y3 = y1 = e.getY();
             }
 
             isPressed = true;
             x2 = e.getX();
             y2 = e.getY();
 
-            if (MinX > x2) MinX = x2;
-            if (MaxX < x2) MaxX = x2;
-            if (MinY > y2) MinY = y2;
-            if (MaxY < y2) MaxY = y2;
+            arrayListForX.add(x2);
+            arrayListForY.add(y2);
 
             paint2();
 
@@ -126,10 +129,14 @@ public class Selection {
         public void mousePressed(MouseEvent e) {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             transparentBufImg = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
-            transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            transparentBufImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
+
+            arrayListForX = new ArrayList();
+            arrayListForY = new ArrayList();
+            polygon = new Polygon();
 
             drawPanel.removeKeyListener(copyListenerSecond);
-            drawPanel.removeKeyListener(pasteListener);
+            drawPanel.removeKeyListener(pasteListenerSecond);
         }
 
         @Override
@@ -142,7 +149,7 @@ public class Selection {
 
             drawPanel.requestFocus();
             drawPanel.addKeyListener(copyListenerSecond);
-            drawPanel.addKeyListener(pasteListener);
+            drawPanel.addKeyListener(pasteListenerSecond);
 
             isPressed = false;
         }
@@ -155,12 +162,12 @@ public class Selection {
         @Override
         public void mouseExited(MouseEvent e) {
             drawPanel.removeKeyListener(copyListenerSecond);
-            drawPanel.removeKeyListener(pasteListener);
+            drawPanel.removeKeyListener(pasteListenerSecond);
         }
     };
 
     public void paint1() {
-        transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+        transparentBufImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
         Graphics2D g = (Graphics2D) transparentBufImg.getGraphics();
 
@@ -198,22 +205,22 @@ public class Selection {
                 if (x1 < x2 && y1 < y2)
                 {
                     copyBufImg = new BufferedImage(x2 - x1,y2 - y1, BufferedImage.TYPE_INT_RGB);
-                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x1, y1, x2 - x1, y2 - y1),0,0, drawPanel);
+                    copyBufImg.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage(x1, y1, x2 - x1, y2 - y1),0,0, drawPanel);
                 }
 
                 if (x1 < x2 && y1 > y2) {
                     copyBufImg = new BufferedImage(x2 - x1,y1 - y2, BufferedImage.TYPE_INT_RGB);
-                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x1, y2, x2 - x1, y1 - y2),0,0, drawPanel);
+                    copyBufImg.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage(x1, y2, x2 - x1, y1 - y2),0,0, drawPanel);
                 }
 
                 if (x1 > x2 && y1 > y2) {
                     copyBufImg = new BufferedImage(x1 - x2,y1 - y2, BufferedImage.TYPE_INT_RGB);
-                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x2, y2, x1 - x2, y1 - y2),0,0, drawPanel);
+                    copyBufImg.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage(x2, y2, x1 - x2, y1 - y2),0,0, drawPanel);
                 }
 
                 if (x1 > x2 && y1 < y2) {
                     copyBufImg = new BufferedImage(x1 - x2,y2 - y1, BufferedImage.TYPE_INT_RGB);
-                    copyBufImg.getGraphics().drawImage(bufferedImage.getSubimage(x2, y1, x1 - x2, y2 - y1),0,0, drawPanel);
+                    copyBufImg.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage(x2, y1, x1 - x2, y2 - y1),0,0, drawPanel);
                 }
             }
         }
@@ -224,12 +231,12 @@ public class Selection {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
             if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-                if (MaxX - MinX > 0 && MaxY - MinY > 0) {
-                    copyBufImg = new BufferedImage(MaxX - MinX,MaxY - MinY, BufferedImage.TYPE_INT_RGB);
-                }
+                Object[] arrX = arrayListForX.toArray();
+                Object[] arrY = arrayListForY.toArray();
 
-                copyBufImg.getGraphics().drawImage(
-                        bufferedImage.getSubimage(MinX, MinY, MaxX - MinX, MaxY - MinY),0,0, drawPanel);
+                for (int i = 0; i < arrX.length; i++) {
+                    polygon.addPoint( ((Integer)arrX[i]).intValue(), ((Integer)arrY[i]).intValue());
+                }
             }
         }
     };
@@ -239,8 +246,34 @@ public class Selection {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
             if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-                bufferedImage.getGraphics().drawImage(copyBufImg, MouseX, MouseY, drawPanel);
-                drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+                drawManager.getBufferedImage().getGraphics().drawImage(copyBufImg, MouseX, MouseY, drawPanel);
+                drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
+            }
+        }
+    };
+
+    private KeyListener pasteListenerSecond = new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            super.keyPressed(e);
+            if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+                Rectangle r = polygon.getBounds();
+                BufferedImage buf = new BufferedImage((int) r.getWidth(), (int) r.getHeight(), BufferedImage.TYPE_INT_RGB);
+                buf.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage((int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight()),0,0, drawPanel);
+
+                Graphics2D g = (Graphics2D) buf.getGraphics();
+                g.setColor(Color.white);
+
+                for (int x = (int) r.getX(); x <= (int)(r.getX() + r.getWidth()); x++) {
+                    for (int y = (int) r.getY(); y <= (int)(r.getY() + r.getHeight()); y++) {
+                        if (!polygon.contains(x, y)) {
+                            g.drawLine(x - (int) r.getX(),y - (int) r.getY(),x - (int) r.getX(),y - (int) r.getY());
+                        }
+                    }
+                }
+
+                drawManager.getBufferedImage().getGraphics().drawImage(buf, MouseX, MouseY, drawPanel);
+                drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
             }
         }
     };

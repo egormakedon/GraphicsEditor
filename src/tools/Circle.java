@@ -14,7 +14,6 @@ public class Circle {
     private Cursor cursor;
     private JPanel drawPanel;
     private JColorChooser colorChooser;
-    private BufferedImage bufferedImage;
     private DrawManager drawManager;
 
     private boolean isPressed = false;
@@ -27,7 +26,6 @@ public class Circle {
         cursor = drawManager.getCursors().getCircleCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
-        bufferedImage = drawManager.getBufferedImage();
 
         this.drawManager = drawManager;
     }
@@ -67,7 +65,7 @@ public class Circle {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+            Graphics2D g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
             g.setColor(color);
             g.setStroke(new BasicStroke(thickness));
 
@@ -76,7 +74,7 @@ public class Circle {
             if (x1 > x2 && y1 > y2) g.drawOval(x2, y2, x1 - x2, y1 - y2);
             if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
 
-            drawPanel.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+            drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
             isPressed = false;
         }
@@ -93,7 +91,7 @@ public class Circle {
     };
 
     public void paint() {
-        transparentBufImg.getGraphics().drawImage(bufferedImage,0,0, drawPanel);
+        transparentBufImg.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
         Graphics2D g = (Graphics2D) transparentBufImg.getGraphics();
 

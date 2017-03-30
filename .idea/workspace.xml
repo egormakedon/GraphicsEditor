@@ -2,12 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8911408f-8260-40e8-ad68-d1cc2a762366" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Line.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Line.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$3.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$4.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$5.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$6.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$7.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$3.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/window/DrawManager.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/window/DrawManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cursors/Cursors.java" afterPath="$PROJECT_DIR$/src/cursors/Cursors.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frame/AddTools.java" afterPath="$PROJECT_DIR$/src/frame/AddTools.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Circle.java" afterPath="$PROJECT_DIR$/src/tools/Circle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Eraser.java" afterPath="$PROJECT_DIR$/src/tools/Eraser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Line.java" afterPath="$PROJECT_DIR$/src/tools/Line.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Magnifier.java" afterPath="$PROJECT_DIR$/src/tools/Magnifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Pencil.java" afterPath="$PROJECT_DIR$/src/tools/Pencil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Quadrangle.java" afterPath="$PROJECT_DIR$/src/tools/Quadrangle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Selection.java" afterPath="$PROJECT_DIR$/src/tools/Selection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Text.java" afterPath="$PROJECT_DIR$/src/tools/Text.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window/DrawManager.java" afterPath="$PROJECT_DIR$/src/window/DrawManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window/Window.java" afterPath="$PROJECT_DIR$/src/window/Window.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,29 +61,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Magnifier.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tools/Magnifier.java">
+      <file leaf-file-name="Selection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tools/Selection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="354">
+              <caret line="254" column="64" lean-forward="true" selection-start-line="254" selection-start-column="64" selection-end-line="254" selection-end-column="64" />
               <folding>
-                <element signature="e#798#799#0" expanded="true" />
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#1681#1682#0" expanded="true" />
-                <element signature="e#1732#1733#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DrawManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/window/DrawManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-              <folding>
-                <element signature="e#1472#1473#0" expanded="true" />
-                <element signature="e#1512#1513#0" expanded="true" />
+                <element signature="e#9828#9829#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,6 +81,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>buffe</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,23 +131,23 @@
         <option value="$PROJECT_DIR$/src/run/Run.java" />
         <option value="$PROJECT_DIR$/src/frame/ToolBar.java" />
         <option value="$PROJECT_DIR$/src/tools/Tool.java" />
-        <option value="$PROJECT_DIR$/src/tools/Eraser.java" />
-        <option value="$PROJECT_DIR$/src/tools/Pencil.java" />
         <option value="$PROJECT_DIR$/src/main/Main.java" />
         <option value="$PROJECT_DIR$/src/frame/DrawPanel.java" />
         <option value="$PROJECT_DIR$/src/tools/Circuit.java" />
         <option value="$PROJECT_DIR$/src/tools/Allocation.java" />
         <option value="$PROJECT_DIR$/src/frame/Frame.java" />
-        <option value="$PROJECT_DIR$/src/tools/Line.java" />
-        <option value="$PROJECT_DIR$/src/tools/Circle.java" />
-        <option value="$PROJECT_DIR$/src/tools/Quadrangle.java" />
-        <option value="$PROJECT_DIR$/src/tools/Text.java" />
-        <option value="$PROJECT_DIR$/src/tools/Selection.java" />
         <option value="$PROJECT_DIR$/src/frame/AddTools.java" />
         <option value="$PROJECT_DIR$/src/cursors/Cursors.java" />
         <option value="$PROJECT_DIR$/src/window/Window.java" />
+        <option value="$PROJECT_DIR$/src/tools/Pencil.java" />
+        <option value="$PROJECT_DIR$/src/tools/Quadrangle.java" />
+        <option value="$PROJECT_DIR$/src/tools/Circle.java" />
+        <option value="$PROJECT_DIR$/src/tools/Eraser.java" />
+        <option value="$PROJECT_DIR$/src/tools/Line.java" />
         <option value="$PROJECT_DIR$/src/window/DrawManager.java" />
         <option value="$PROJECT_DIR$/src/tools/Magnifier.java" />
+        <option value="$PROJECT_DIR$/src/tools/Text.java" />
+        <option value="$PROJECT_DIR$/src/tools/Selection.java" />
       </list>
     </option>
   </component>
@@ -154,6 +178,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -216,47 +243,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GraphicsEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GraphicsEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GraphicsEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GraphicsEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cursors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -752,11 +740,14 @@
       <workItem from="1490790058751" duration="9138000" />
       <workItem from="1490802184576" duration="710000" />
       <workItem from="1490808163421" duration="11547000" />
+      <workItem from="1490850778066" duration="4894000" />
+      <workItem from="1490855748864" duration="5876000" />
+      <workItem from="1490902866360" duration="5666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="350384000" />
+    <option name="totallyTimeSpent" value="366820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -980,54 +971,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="68" column="49" lean-forward="true" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Line.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Eraser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Quadrangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="71" column="52" lean-forward="false" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Text.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="114" column="38" lean-forward="true" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Selection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="213" column="41" lean-forward="false" selection-start-line="213" selection-start-column="41" selection-end-line="213" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/frame/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,8 +988,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frame/AddTools.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="351" column="33" lean-forward="true" selection-start-line="351" selection-start-column="33" selection-end-line="351" selection-end-column="33" />
+        <state relative-caret-position="238">
+          <caret line="386" column="70" lean-forward="false" selection-start-line="386" selection-start-column="65" selection-end-line="386" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -1051,38 +998,74 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/Pencil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="94" column="74" lean-forward="true" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
+        <state relative-caret-position="201">
+          <caret line="69" column="17" lean-forward="true" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Quadrangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Circle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1374">
+          <caret line="93" column="80" lean-forward="false" selection-start-line="93" selection-start-column="80" selection-end-line="93" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/window/DrawManager.java">
+    <entry file="file://$PROJECT_DIR$/src/tools/Eraser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-          <folding>
-            <element signature="e#1472#1473#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="558">
+          <caret line="92" column="72" lean-forward="false" selection-start-line="92" selection-start-column="72" selection-end-line="92" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Line.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/Magnifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Text.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="92" column="6" lean-forward="true" selection-start-line="92" selection-start-column="6" selection-end-line="92" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/window/DrawManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="109" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Selection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="254" column="64" lean-forward="true" selection-start-line="254" selection-start-column="64" selection-end-line="254" selection-end-column="64" />
           <folding>
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#9828#9829#0" expanded="true" />
           </folding>
         </state>
       </provider>
