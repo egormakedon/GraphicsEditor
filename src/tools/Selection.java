@@ -23,6 +23,7 @@ public class Selection {
     private ArrayList arrayListForX;
     private ArrayList arrayListForY;
     private Polygon polygon;
+    private BufferedImage buf;
 
     public Selection(DrawManager drawManager) {
         cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
@@ -237,6 +238,10 @@ public class Selection {
                 for (int i = 0; i < arrX.length; i++) {
                     polygon.addPoint( ((Integer)arrX[i]).intValue(), ((Integer)arrY[i]).intValue());
                 }
+
+                Rectangle r = polygon.getBounds();
+                buf = new BufferedImage((int) r.getWidth(), (int) r.getHeight(), BufferedImage.TYPE_INT_RGB);
+                buf.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage((int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight()),0,0, drawPanel);
             }
         }
     };
@@ -257,16 +262,15 @@ public class Selection {
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
             if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-                Rectangle r = polygon.getBounds();
-                BufferedImage buf = new BufferedImage((int) r.getWidth(), (int) r.getHeight(), BufferedImage.TYPE_INT_RGB);
-                buf.getGraphics().drawImage(drawManager.getBufferedImage().getSubimage((int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight()),0,0, drawPanel);
-
                 Graphics2D g = (Graphics2D) buf.getGraphics();
-                g.setColor(Color.white);
+                Rectangle r = polygon.getBounds();
 
                 for (int x = (int) r.getX(); x <= (int)(r.getX() + r.getWidth()); x++) {
                     for (int y = (int) r.getY(); y <= (int)(r.getY() + r.getHeight()); y++) {
                         if (!polygon.contains(x, y)) {
+                            if (MouseX + x - (int) r.getX() < drawManager.getBufferedImage().getWidth() && MouseY + y - (int) r.getY() < drawManager.getBufferedImage().getHeight()) {
+                                g.setColor(new Color(drawManager.getBufferedImage().getRGB(MouseX + x - (int) r.getX(), MouseY + y - (int) r.getY())));
+                            }
                             g.drawLine(x - (int) r.getX(),y - (int) r.getY(),x - (int) r.getX(),y - (int) r.getY());
                         }
                     }

@@ -2,24 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8911408f-8260-40e8-ad68-d1cc2a762366" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Circle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Eraser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Line$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Line.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Line.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Magnifier.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Pencil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Quadrangle.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$3.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$3.class" />
@@ -27,22 +9,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$5.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$6.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$7.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$8.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Selection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$1.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$2.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$3.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/tools/Text.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/tools/Text.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphics editor/window/DrawManager.class" afterPath="$PROJECT_DIR$/out/production/graphics editor/window/DrawManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Circle.java" afterPath="$PROJECT_DIR$/src/tools/Circle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Eraser.java" afterPath="$PROJECT_DIR$/src/tools/Eraser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Line.java" afterPath="$PROJECT_DIR$/src/tools/Line.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Magnifier.java" afterPath="$PROJECT_DIR$/src/tools/Magnifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Pencil.java" afterPath="$PROJECT_DIR$/src/tools/Pencil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Quadrangle.java" afterPath="$PROJECT_DIR$/src/tools/Quadrangle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Selection.java" afterPath="$PROJECT_DIR$/src/tools/Selection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Text.java" afterPath="$PROJECT_DIR$/src/tools/Text.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/window/DrawManager.java" afterPath="$PROJECT_DIR$/src/window/DrawManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,11 +34,9 @@
       <file leaf-file-name="Selection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tools/Selection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="254" column="64" lean-forward="true" selection-start-line="254" selection-start-column="64" selection-end-line="254" selection-end-column="64" />
-              <folding>
-                <element signature="e#9828#9829#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="603">
+              <caret line="277" column="0" lean-forward="true" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,8 +147,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -743,11 +711,13 @@
       <workItem from="1490850778066" duration="4894000" />
       <workItem from="1490855748864" duration="5876000" />
       <workItem from="1490902866360" duration="5666000" />
+      <workItem from="1491247116646" duration="309000" />
+      <workItem from="1491255003357" duration="3134000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366820000" />
+    <option name="totallyTimeSpent" value="370263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -982,7 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="516">
           <caret line="37" column="88" lean-forward="false" selection-start-line="37" selection-start-column="88" selection-end-line="37" selection-end-column="88" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1062,11 +1031,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/Selection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="254" column="64" lean-forward="true" selection-start-line="254" selection-start-column="64" selection-end-line="254" selection-end-column="64" />
-          <folding>
-            <element signature="e#9828#9829#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="603">
+          <caret line="277" column="0" lean-forward="true" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
