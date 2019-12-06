@@ -1,8 +1,8 @@
-package window;
+package by.makedon.graphicseditor.window;
 
-import frame.*;
-import frame.Frame;
-import frame.MenuBar;
+import by.makedon.graphicseditor.frame.*;
+import by.makedon.graphicseditor.frame.Frame;
+import by.makedon.graphicseditor.frame.MenuBar;
 
 import javax.swing.*;
 import java.awt.*;

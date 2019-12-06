@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.makedon</groupId>
-    <artifactId>grafics-editor</artifactId>
+    <artifactId>graphics-editor</artifactId>
     <version>1.0</version>
 
-    <name>Grafics Editor</name>
-    <description>This is grafics editor application written on Java 8 and on Swing library</description>
+    <name>Graphics Editor</name>
+    <description>This is graphics editor application written on Java 8 and on Swing library</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

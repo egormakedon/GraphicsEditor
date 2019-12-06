@@ -1,4 +1,4 @@
-package cursors;
+package by.makedon.graphicseditor.cursors;
 
 import java.awt.*;
 

@@ -1,6 +1,6 @@
-package window;
+package by.makedon.graphicseditor.window;
 
-import cursors.Cursors;
+import by.makedon.graphicseditor.cursors.Cursors;
 
 import javax.swing.*;
 import java.awt.*;

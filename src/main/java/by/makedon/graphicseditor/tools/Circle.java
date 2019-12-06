@@ -1,6 +1,6 @@
-package tools;
+package by.makedon.graphicseditor.tools;
 
-import window.DrawManager;
+import by.makedon.graphicseditor.window.DrawManager;
 
 import javax.swing.*;
 import java.awt.*;

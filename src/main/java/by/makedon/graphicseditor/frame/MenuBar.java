@@ -1,4 +1,4 @@
-package frame;
+package by.makedon.graphicseditor.frame;
 
 import javax.swing.*;
 import java.awt.*;

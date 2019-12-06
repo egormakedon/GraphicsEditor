@@ -1,6 +1,6 @@
-package main;
+package by.makedon.graphicseditor.runner;
 
-import window.Window;
+import by.makedon.graphicseditor.window.Window;
 
 import javax.swing.*;
 
