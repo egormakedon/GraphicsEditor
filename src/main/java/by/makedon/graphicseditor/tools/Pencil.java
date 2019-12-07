@@ -1,11 +1,10 @@
 package by.makedon.graphicseditor.tools;
 
-import by.makedon.graphicseditor.window.DrawManager;
+import by.makedon.graphicseditor.DrawManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 
 public class Pencil {
 

@@ -1,7 +1,7 @@
 package by.makedon.graphicseditor.frame;
 
 import by.makedon.graphicseditor.tools.*;
-import by.makedon.graphicseditor.window.DrawManager;
+import by.makedon.graphicseditor.DrawManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

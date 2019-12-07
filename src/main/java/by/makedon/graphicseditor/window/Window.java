@@ -1,19 +1,13 @@
 package by.makedon.graphicseditor.window;
 
-import by.makedon.graphicseditor.frame.*;
-import by.makedon.graphicseditor.frame.Frame;
-import by.makedon.graphicseditor.frame.MenuBar;
-
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Yahor Makedon
+ */
 public class Window {
-
-    private Frame frame = new Frame();
-    private MenuBar menuBar = new MenuBar();
-    private ToolBar toolBar = new ToolBar();
-
-    private AddTools addTools;
+    private JFrame jFrame;
 
     public Window() {
         JFrame frame = this.frame.getFrame();
@@ -26,17 +20,21 @@ public class Window {
         frame.add(toolBar, BorderLayout.WEST);
         frame.add(scrollPane, BorderLayout.CENTER);
 
-        addTools = new AddTools(drawPanel);
-        addTools.setBars(menuBar, toolBar);
+//        addTools = new AddTools(drawPanel);
+//        addTools.setBars(menuBar, toolBar);
 
-        frame.setVisible(true);
+
     }
 
-    public class NewPanel extends JPanel {
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(addTools.getDrawManager().getBufferedImage(),0,0,this);
-        }
+    public void show() {
+        jFrame.setVisible(true);
     }
+
+//    public class NewPanel extends JPanel {
+//        @Override
+//        public void paintComponent(Graphics g) {
+//            super.paintComponent(g);
+//            g.drawImage(addTools.getDrawManager().getBufferedImage(),0,0,this);
+//        }
+//    }
 }

@@ -1,4 +1,4 @@
-package by.makedon.graphicseditor.window;
+package by.makedon.graphicseditor;
 
 import by.makedon.graphicseditor.cursors.Cursors;
 
