@@ -14,7 +14,7 @@ public class ApplicationRunner {
 
     public static void main(String[] args) {
         try {
-            SwingUtilities.invokeLater(() -> new Window().show());
+            SwingUtilities.invokeLater(() -> new Window().showWindow());
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
