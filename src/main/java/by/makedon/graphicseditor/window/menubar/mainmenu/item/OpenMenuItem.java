@@ -1,29 +1,14 @@
 package by.makedon.graphicseditor.window.menubar.mainmenu.item;
 
 import by.makedon.graphicseditor.util.Constants;
-import by.makedon.graphicseditor.util.ResourceUtil;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import by.makedon.graphicseditor.window.menubar.AbstractMenuItem;
 
 /**
  * @author Yahor Makedon
  */
-public class OpenMenuItem extends JMenuItem {
-    @SuppressWarnings("all")
+public class OpenMenuItem extends AbstractMenuItem {
     public OpenMenuItem() {
-        String openMenuItemName = ResourceUtil.getPropertyValue(Constants.OPEN_MENU_ITEM_NAME);
-        String openMenuItemIconPath = ResourceUtil.getPropertyValue(Constants.OPEN_MENU_ITEM_ICON_PATH);
-
-        setText(openMenuItemName);
-        setIcon(new ImageIcon(Thread.currentThread()
-                                    .getContextClassLoader()
-                                    .getResource(openMenuItemIconPath)));
+        super(Constants.OPEN_MENU_ITEM_NAME, Constants.OPEN_MENU_ITEM_ICON_PATH);
     }
 
 //    open.addActionListener(new ActionListener() {

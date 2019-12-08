@@ -1,25 +1,24 @@
 package by.makedon.graphicseditor.window.menubar.mainmenu;
 
 import by.makedon.graphicseditor.util.Constants;
-import by.makedon.graphicseditor.util.ResourceUtil;
+import by.makedon.graphicseditor.window.menubar.AbstractMenu;
+import by.makedon.graphicseditor.window.menubar.mainmenu.item.ClearMenuItem;
+import by.makedon.graphicseditor.window.menubar.mainmenu.item.ExitMenuItem;
 import by.makedon.graphicseditor.window.menubar.mainmenu.item.OpenMenuItem;
-
-import javax.swing.*;
+import by.makedon.graphicseditor.window.menubar.mainmenu.item.SaveAsMenuItem;
 
 /**
  * @author Yahor Makedon
  */
-public class MainMenu extends JMenu {
-    @SuppressWarnings("all")
+public class MainMenu extends AbstractMenu {
     public MainMenu() {
-        String mainMenuName = ResourceUtil.getPropertyValue(Constants.MAIN_MENU_NAME);
-        String mainMenuIconPath = ResourceUtil.getPropertyValue(Constants.MAIN_MENU_ICON_PATH);
-
-        setText(mainMenuName);
-        setIcon(new ImageIcon(Thread.currentThread()
-                                    .getContextClassLoader()
-                                    .getResource(mainMenuIconPath)));
+        super(Constants.MAIN_MENU_NAME, Constants.MAIN_MENU_ICON_PATH);
 
         add(new OpenMenuItem());
+        add(new SaveAsMenuItem());
+        addSeparator();
+        add(new ClearMenuItem());
+        addSeparator();
+        add(new ExitMenuItem());
     }
 }

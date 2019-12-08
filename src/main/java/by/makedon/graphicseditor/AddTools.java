@@ -1,17 +1,13 @@
-package by.makedon.graphicseditor.frame;
+package by.makedon.graphicseditor;
 
 import by.makedon.graphicseditor.tools.*;
-import by.makedon.graphicseditor.DrawManager;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddTools {
     private DrawManager drawManager = new DrawManager();
@@ -41,10 +37,6 @@ public class AddTools {
     }
 
     public void setMenuTools(JMenuBar menuBar) {
-        JMenuItem saveAs = setToolItem("","save as");
-        JMenuItem clear = setToolItem("","clear");
-        JMenuItem exit = setToolItem("","exit");
-
         JMenuItem pencil = setToolItem("images/pencil.png","pencil");
         JMenuItem line = setToolItem("images/line.png","line");
         JMenuItem quadrangle = setToolItem("images/quadrangle.png","quadrangle");
@@ -59,12 +51,6 @@ public class AddTools {
 
         JMenuItem selection1 = setToolItem("images/selection1.png", "rectangle");
         JMenuItem selection2 = setToolItem("images/selection2.png", "arbitrary");
-
-        menu.add(saveAs);
-        menu.addSeparator();
-        menu.add(clear);
-        menu.addSeparator();
-        menu.add(exit);
 
         toolsMenu.add(pencil);
         toolsMenu.add(line);
@@ -89,7 +75,7 @@ public class AddTools {
         menuBar.add(thicknessMenu);
         menuBar.add(selectionMenu);
 
-        setMenuFunction(saveAs, clear, exit, thickness1x, thickness2x, thickness3x);
+        setMenuFunction(thickness1x, thickness2x, thickness3x);
         setItemFunction(pencil, line, quadrangle, eraser, circle, text, selection1, selection2, magnifier);
     }
 
@@ -206,43 +192,11 @@ public class AddTools {
         return item;
     }
 
-    public void setMenuFunction(JMenuItem saveAs,
-                                JMenuItem clear, JMenuItem exit, JMenuItem thickness1x,
+    public void setMenuFunction(JMenuItem thickness1x,
                                 JMenuItem thickness2x, JMenuItem thickness3x) {
 
-        saveAs.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser("D:\\");
 
-                int userSelection = fileChooser.showDialog(null,"Save as");
-                if (userSelection == JFileChooser.APPROVE_OPTION) {
-                    String file = fileChooser.getSelectedFile().getAbsolutePath() + ".png";
-                    try {
-                        ImageIO.write(drawManager.getBufferedImage(),"png", new File(file));
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                }
-            }
-        });
 
-        clear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                Graphics g = drawManager.getBufferedImage().getGraphics();
-                g.fillRect(0,0, (int) screenSize.getWidth(), (int) screenSize.getHeight());
-                drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(), 0, 0, drawPanel);
-            }
-        });
-
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
-        });
 
         colorMenu.addChangeListener(new ChangeListener() {
             @Override

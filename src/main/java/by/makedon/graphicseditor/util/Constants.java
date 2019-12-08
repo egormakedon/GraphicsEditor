@@ -20,6 +20,15 @@ public final class Constants {
     public static final String OPEN_MENU_ITEM_NAME = "open.menu.item.name";
     public static final String OPEN_MENU_ITEM_ICON_PATH = "open.menu.item.icon.path";
 
+    public static final String SAVE_AS_MENU_ITEM_NAME = "save.as.menu.item.name";
+    public static final String SAVE_AS_MENU_ITEM_ICON_PATH = "save.as.menu.item.icon.path";
+
+    public static final String CLEAR_MENU_ITEM_NAME = "clear.menu.item.name";
+    public static final String CLEAR_MENU_ITEM_ICON_PATH = "clear.menu.item.icon.path";
+
+    public static final String EXIT_MENU_ITEM_NAME = "exit.menu.item.name";
+    public static final String EXIT_MENU_ITEM_ICON_PATH = "exit.menu.item.icon.path";
+
     private Constants() {
     }
 }
