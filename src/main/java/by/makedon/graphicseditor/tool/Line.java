@@ -1,4 +1,4 @@
-package by.makedon.graphicseditor.tools;
+package by.makedon.graphicseditor.tool;
 
 import by.makedon.graphicseditor.DrawManager;
 
@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-public class Circle {
+public class Line {
 
     private Cursor cursor;
     private JPanel drawPanel;
@@ -22,8 +22,8 @@ public class Circle {
     private Color color;
     private BufferedImage transparentBufImg;
 
-    public Circle(DrawManager drawManager) {
-        cursor = drawManager.getCursors().getCircleCursor();
+    public Line(DrawManager drawManager) {
+        cursor = drawManager.getCursors().getLineCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
 
@@ -68,12 +68,7 @@ public class Circle {
             Graphics2D g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
             g.setColor(color);
             g.setStroke(new BasicStroke(thickness));
-
-            if (x1 < x2 && y1 < y2) g.drawOval(x1, y1, x2 - x1, y2 - y1);
-            if (x1 < x2 && y1 > y2) g.drawOval(x1, y2, x2 - x1, y1 - y2);
-            if (x1 > x2 && y1 > y2) g.drawOval(x2, y2, x1 - x2, y1 - y2);
-            if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
-
+            g.drawLine(x1, y1, x2, y2);
             drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
             isPressed = false;
@@ -97,11 +92,7 @@ public class Circle {
 
         g.setColor(colorChooser.getColor());
         g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
-
-        if (x1 < x2 && y1 < y2) g.drawOval(x1, y1, x2 - x1, y2 - y1);
-        if (x1 < x2 && y1 > y2) g.drawOval(x1, y2, x2 - x1, y1 - y2);
-        if (x1 > x2 && y1 > y2) g.drawOval(x2, y2, x1 - x2, y1 - y2);
-        if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
+        g.drawLine(x1, y1, x2, y2);
 
         drawPanel.getGraphics().drawImage(transparentBufImg,0,0, drawPanel);
 

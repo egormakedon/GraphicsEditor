@@ -1,6 +1,6 @@
 package by.makedon.graphicseditor;
 
-import by.makedon.graphicseditor.tools.*;
+import by.makedon.graphicseditor.tool.*;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -28,10 +28,6 @@ public class AddTools {
         colorChooser.setColor(Color.black);
 
         this.drawPanel = drawPanel;
-    }
-
-    public void setBars (JMenuBar menuBar) {
-        setMenuTools(menuBar);
     }
 
     public void setMenuTools(JMenuBar menuBar) {

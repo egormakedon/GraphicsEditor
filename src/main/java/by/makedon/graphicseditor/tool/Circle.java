@@ -1,4 +1,4 @@
-package by.makedon.graphicseditor.tools;
+package by.makedon.graphicseditor.tool;
 
 import by.makedon.graphicseditor.DrawManager;
 
@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-public class Quadrangle {
+public class Circle {
 
     private Cursor cursor;
     private JPanel drawPanel;
@@ -22,8 +22,8 @@ public class Quadrangle {
     private Color color;
     private BufferedImage transparentBufImg;
 
-    public Quadrangle(DrawManager drawManager) {
-        cursor = drawManager.getCursors().getQuadrangleCursor();
+    public Circle(DrawManager drawManager) {
+        cursor = drawManager.getCursors().getCircleCursor();
         drawPanel = drawManager.getDrawPanel();
         colorChooser = drawManager.getColorChooser();
 
@@ -69,10 +69,10 @@ public class Quadrangle {
             g.setColor(color);
             g.setStroke(new BasicStroke(thickness));
 
-            if (x1 < x2 && y1 < y2) g.drawRect(x1, y1, x2 - x1, y2 - y1);
-            if (x1 < x2 && y1 > y2) g.drawRect(x1, y2, x2 - x1, y1 - y2);
-            if (x1 > x2 && y1 > y2) g.drawRect(x2, y2, x1 - x2, y1 - y2);
-            if (x1 > x2 && y1 < y2) g.drawRect(x2, y1, x1 - x2, y2 - y1);
+            if (x1 < x2 && y1 < y2) g.drawOval(x1, y1, x2 - x1, y2 - y1);
+            if (x1 < x2 && y1 > y2) g.drawOval(x1, y2, x2 - x1, y1 - y2);
+            if (x1 > x2 && y1 > y2) g.drawOval(x2, y2, x1 - x2, y1 - y2);
+            if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
 
             drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
 
@@ -98,10 +98,10 @@ public class Quadrangle {
         g.setColor(colorChooser.getColor());
         g.setStroke(new BasicStroke(drawManager.getThickness() * 2.0f));
 
-        if (x1 < x2 && y1 < y2) g.drawRect(x1, y1, x2 - x1, y2 - y1);
-        if (x1 < x2 && y1 > y2) g.drawRect(x1, y2, x2 - x1, y1 - y2);
-        if (x1 > x2 && y1 > y2) g.drawRect(x2, y2, x1 - x2, y1 - y2);
-        if (x1 > x2 && y1 < y2) g.drawRect(x2, y1, x1 - x2, y2 - y1);
+        if (x1 < x2 && y1 < y2) g.drawOval(x1, y1, x2 - x1, y2 - y1);
+        if (x1 < x2 && y1 > y2) g.drawOval(x1, y2, x2 - x1, y1 - y2);
+        if (x1 > x2 && y1 > y2) g.drawOval(x2, y2, x1 - x2, y1 - y2);
+        if (x1 > x2 && y1 < y2) g.drawOval(x2, y1, x1 - x2, y2 - y1);
 
         drawPanel.getGraphics().drawImage(transparentBufImg,0,0, drawPanel);
 
