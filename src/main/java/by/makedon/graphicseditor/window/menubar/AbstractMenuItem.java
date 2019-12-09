@@ -22,4 +22,10 @@ public abstract class AbstractMenuItem extends JMenuItem {
             setIcon(new ImageIcon(url));
         }
     }
+
+    protected void setMenuName(JMenu jMenu, String menuNamePropertyKey, String menuItemNamePropertyKey) {
+        jMenu.setText(String.format("%s: %s",
+                ResourceUtil.getPropertyValue(menuNamePropertyKey),
+                ResourceUtil.getPropertyValue(menuItemNamePropertyKey)));
+    }
 }

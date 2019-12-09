@@ -1,7 +1,5 @@
 package by.makedon.graphicseditor;
 
-import by.makedon.graphicseditor.cursors.Cursors;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

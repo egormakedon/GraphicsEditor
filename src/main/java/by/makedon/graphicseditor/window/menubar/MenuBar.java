@@ -3,6 +3,7 @@ package by.makedon.graphicseditor.window.menubar;
 import by.makedon.graphicseditor.util.Constants;
 import by.makedon.graphicseditor.util.ResourceUtil;
 import by.makedon.graphicseditor.window.menubar.mainmenu.MainMenu;
+import by.makedon.graphicseditor.window.menubar.toolsmenu.ToolsMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,5 +22,6 @@ public class MenuBar extends JMenuBar {
         setBorder(BorderFactory.createEtchedBorder());
 
         add(new MainMenu());
+        add(new ToolsMenu());
     }
 }

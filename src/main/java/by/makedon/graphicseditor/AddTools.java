@@ -13,7 +13,6 @@ public class AddTools {
     private DrawManager drawManager = new DrawManager();
     private JPanel drawPanel;
 
-    private JMenu menu = new JMenu("menu");
     private JMenu toolsMenu = new JMenu("tools");
     private JMenu colorMenu = new JMenu("color");
     private JColorChooser colorChooser = new JColorChooser();
@@ -21,7 +20,6 @@ public class AddTools {
     private JMenu selectionMenu = new JMenu("selection");
 
     public AddTools(JPanel drawPanel) {
-        toolsMenu.setIcon(new ImageIcon("images/toolsMenu.png"));
         colorMenu.setIcon(new ImageIcon("images/colorMenu.png"));
         thicknessMenu.setIcon(new ImageIcon("images/thicknessMenu.png"));
         selectionMenu.setIcon(new ImageIcon("images/selection1.png"));
@@ -37,10 +35,6 @@ public class AddTools {
     }
 
     public void setMenuTools(JMenuBar menuBar) {
-        JMenuItem pencil = setToolItem("images/pencil.png","pencil");
-        JMenuItem line = setToolItem("images/line.png","line");
-        JMenuItem quadrangle = setToolItem("images/quadrangle.png","quadrangle");
-        JMenuItem circle = setToolItem("images/circle.png","circle");
         JMenuItem eraser = setToolItem("images/eraser.png","eraser");
         JMenuItem magnifier = setToolItem("images/magnifier.png","magnifier");
         JMenuItem text = setToolItem("images/text.png","text");
@@ -52,10 +46,6 @@ public class AddTools {
         JMenuItem selection1 = setToolItem("images/selection1.png", "rectangle");
         JMenuItem selection2 = setToolItem("images/selection2.png", "arbitrary");
 
-        toolsMenu.add(pencil);
-        toolsMenu.add(line);
-        toolsMenu.add(quadrangle);
-        toolsMenu.add(circle);
         toolsMenu.add(eraser);
         toolsMenu.add(magnifier);
         toolsMenu.add(text);
@@ -69,70 +59,26 @@ public class AddTools {
         selectionMenu.add(selection1);
         selectionMenu.add(selection2);
 
-        menuBar.add(menu);
         menuBar.add(toolsMenu);
         menuBar.add(colorMenu);
         menuBar.add(thicknessMenu);
         menuBar.add(selectionMenu);
 
         setMenuFunction(thickness1x, thickness2x, thickness3x);
-        setItemFunction(pencil, line, quadrangle, eraser, circle, text, selection1, selection2, magnifier);
+        setItemFunction(eraser, text, selection1, selection2, magnifier);
     }
 
-    public void setItemFunction(JMenuItem pencilIt, JMenuItem lineIt, JMenuItem quadrangleIt
-            , JMenuItem eraserIt, JMenuItem circleIt, JMenuItem textIt,
+    public void setItemFunction(JMenuItem eraserIt, JMenuItem textIt,
                                 JMenuItem selection1, JMenuItem selection2, JMenuItem magnifierIt) {
 
         drawManager.setDrawManager(drawPanel, colorChooser);
 
-        Pencil pencil = new Pencil(drawManager);
-        Line line = new Line(drawManager);
-        Quadrangle quadrangle = new Quadrangle(drawManager);
         Eraser eraser = new Eraser(drawManager);
-        Circle circle = new Circle(drawManager);
+
         Text text = new Text(drawManager);
         Selection selection = new Selection(drawManager);
         Magnifier magnifier = new Magnifier(drawManager);
 
-        pencilIt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.removeListeners();
-
-                drawPanel.addMouseListener(pencil.getMouseListener());
-                drawPanel.addMouseMotionListener(pencil.getMouseMotionListener());
-            }
-        });
-
-        lineIt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.removeListeners();
-
-                drawPanel.addMouseListener(line.getMouseListener());
-                drawPanel.addMouseMotionListener(line.getMouseMotionListener());
-            }
-        });
-
-        quadrangleIt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.removeListeners();
-
-                drawPanel.addMouseListener(quadrangle.getMouseListener());
-                drawPanel.addMouseMotionListener(quadrangle.getMouseMotionListener());
-            }
-        });
-
-        circleIt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.removeListeners();
-
-                drawPanel.addMouseListener(circle.getMouseListener());
-                drawPanel.addMouseMotionListener(circle.getMouseMotionListener());
-            }
-        });
 
         eraserIt.addActionListener(new ActionListener() {
             @Override
