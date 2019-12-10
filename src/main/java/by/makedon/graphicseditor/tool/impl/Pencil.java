@@ -1,12 +1,13 @@
 package by.makedon.graphicseditor.tool.impl;
 
 import by.makedon.graphicseditor.DrawManager;
+import by.makedon.graphicseditor.tool.AbstractTool;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Pencil {
+public class Pencil extends AbstractTool {
 
     private Cursor cursor;
     private JPanel drawPanel;
@@ -16,12 +17,12 @@ public class Pencil {
     private boolean isPressed = false;
     private int x1, x2, y1, y2;
 
-    public Pencil(DrawManager drawManager) {
-        cursor = drawManager.getCursors().getPencilCursor();
-        drawPanel = drawManager.getDrawPanel();
-        colorChooser = drawManager.getColorChooser();
-
-        this.drawManager = drawManager;
+    public Pencil() {
+//        cursor = drawManager.getCursors().getPencilCursor();
+//        drawPanel = drawManager.getDrawPanel();
+//        colorChooser = drawManager.getColorChooser();
+//
+//        this.drawManager = drawManager;
     }
 
     private MouseMotionListener mouseMotionListener = new MouseMotionListener() {

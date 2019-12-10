@@ -1,5 +1,7 @@
 package by.makedon.graphicseditor.manager;
 
+import by.makedon.graphicseditor.tool.Tool;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,6 +12,7 @@ public final class DrawManager {
     private static DrawManager instance;
 
     private DrawPanel drawPanel;
+    private Tool tool;
 
     private DrawManager() {
         drawPanel = new DrawPanel();
@@ -24,6 +27,10 @@ public final class DrawManager {
 
     public DrawPanel getDrawPanel() {
         return drawPanel;
+    }
+
+    public void setTool(Tool tool) {
+        this.tool = tool;
     }
 
     private class DrawPanel extends JPanel {

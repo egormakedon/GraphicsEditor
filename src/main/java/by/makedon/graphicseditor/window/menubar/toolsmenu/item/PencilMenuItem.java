@@ -1,5 +1,8 @@
 package by.makedon.graphicseditor.window.menubar.toolsmenu.item;
 
+import by.makedon.graphicseditor.manager.DrawManager;
+import by.makedon.graphicseditor.tool.ToolManager;
+import by.makedon.graphicseditor.tool.impl.Pencil;
 import by.makedon.graphicseditor.util.Constants;
 import by.makedon.graphicseditor.window.menubar.AbstractMenuItem;
 
@@ -14,17 +17,10 @@ public class PencilMenuItem extends AbstractMenuItem {
 
         addActionListener((e) -> {
             setMenuName(toolsMenu, Constants.TOOLS_MENU_NAME, Constants.PENCIL_MENU_ITEM_NAME);
+            DrawManager.getInstance()
+                       .setTool(ToolManager.getInstance()
+                                           .getTool(Pencil.class));
+            //TODO add check on existing tool
         });
     }
-
-//    pencilIt.addActionListener(new ActionListener() {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            Pencil pencil = new Pencil(drawManager);
-//            drawManager.removeListeners();
-//
-//            drawPanel.addMouseListener(pencil.getMouseListener());
-//            drawPanel.addMouseMotionListener(pencil.getMouseMotionListener());
-//        }
-//    });
 }

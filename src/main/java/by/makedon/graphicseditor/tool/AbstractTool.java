@@ -7,6 +7,10 @@ import java.awt.event.MouseEvent;
  */
 public abstract class AbstractTool implements Tool {
     @Override
+    public void init() {
+    }
+
+    @Override
     public void mouseClicked(MouseEvent e) {
     }
 

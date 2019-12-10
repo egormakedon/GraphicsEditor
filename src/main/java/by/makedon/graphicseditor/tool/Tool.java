@@ -7,4 +7,5 @@ import java.awt.event.MouseMotionListener;
  * @author Yahor Makedon
  */
 public interface Tool extends MouseListener, MouseMotionListener {
+    void init();
 }
