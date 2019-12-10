@@ -16,11 +16,12 @@ public class PencilMenuItem extends AbstractMenuItem {
         super(Constants.PENCIL_MENU_ITEM_NAME, Constants.PENCIL_MENU_ITEM_ICON_PATH);
 
         addActionListener((e) -> {
-            setMenuName(toolsMenu, Constants.TOOLS_MENU_NAME, Constants.PENCIL_MENU_ITEM_NAME);
-            DrawManager.getInstance()
-                       .setTool(ToolManager.getInstance()
-                                           .getTool(Pencil.class));
-            //TODO add check on existing tool
+            if (!(DrawManager.getInstance().getTool() instanceof Pencil)) {
+                setMenuName(toolsMenu, Constants.TOOLS_MENU_NAME, Constants.PENCIL_MENU_ITEM_NAME);
+                DrawManager.getInstance()
+                           .setTool(ToolManager.getInstance()
+                                               .getTool(Pencil.class));
+            }
         });
     }
 }

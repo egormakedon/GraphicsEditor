@@ -67,8 +67,6 @@ public class AddTools {
     public void setItemFunction(JMenuItem eraserIt, JMenuItem textIt,
                                 JMenuItem selection1, JMenuItem selection2, JMenuItem magnifierIt) {
 
-        drawManager.setDrawManager(drawPanel, colorChooser);
-
         Eraser eraser = new Eraser(drawManager);
 
         Text text = new Text(drawManager);
