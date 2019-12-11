@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Yahor Makedon
@@ -35,6 +37,21 @@ public final class DrawManager {
         return instance;
     }
 
+    public void paint() {
+        drawPanel.getGraphics()
+                 .drawImage(bufferedImage, 0, 0, drawPanel);
+    }
+
+    //TODO do with colorchooser
+    public Color getColor() {
+        return Color.black;
+    }
+
+    //TODO with thickness param
+    public Stroke getStroke() {
+        return new BasicStroke(2.0f);
+    }
+
     public DrawPanel getDrawPanel() {
         return drawPanel;
     }
@@ -47,14 +64,8 @@ public final class DrawManager {
         return tool;
     }
 
-    //TODO Remove if don't need externally
     public BufferedImage getBufferedImage() {
         return bufferedImage;
-    }
-
-    //TODO test method
-    public void draw() {
-        drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
     }
 
     private BufferedImage initBufferedImage() {
@@ -66,14 +77,22 @@ public final class DrawManager {
 
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
         g.fillRect(0, 0, screenWidth, screenHeight);
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
+        Map<Object, Object> hints = new HashMap<>();
+        hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        hints.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        hints.put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        hints.put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        hints.put(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+        hints.put(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+        g.setRenderingHints(hints);
 
         return bufferedImage;
     }
 
-    //TODO to private
-    public class DrawPanel extends JPanel {
+    private class DrawPanel extends JPanel {
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
