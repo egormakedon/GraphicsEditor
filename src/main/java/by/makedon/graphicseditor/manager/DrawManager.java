@@ -42,6 +42,11 @@ public final class DrawManager {
                  .drawImage(bufferedImage, 0, 0, drawPanel);
     }
 
+    public void paint(BufferedImage bufferedImage) {
+        drawPanel.getGraphics()
+                 .drawImage(bufferedImage, 0, 0, drawPanel);
+    }
+
     //TODO do with colorchooser
     public Color getColor() {
         return Color.black;

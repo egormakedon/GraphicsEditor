@@ -1,5 +1,6 @@
 package by.makedon.graphicseditor.tool;
 
+import by.makedon.graphicseditor.tool.impl.Line;
 import by.makedon.graphicseditor.tool.impl.Pencil;
 
 import java.util.HashMap;
@@ -16,6 +17,7 @@ public final class ToolManager {
     private ToolManager() {
         toolMap = new HashMap<>();
         toolMap.put(Pencil.class, new Pencil());
+        toolMap.put(Line.class, new Line());
     }
 
     public static ToolManager getInstance() {

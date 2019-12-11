@@ -28,7 +28,7 @@ public class Pencil extends AbstractTool {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        isMousePressed = false;
+        init();
     }
 
     @Override
@@ -43,10 +43,10 @@ public class Pencil extends AbstractTool {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (isMousePressed) {
-            x2 = e.getX();
-            y2 = e.getY();
+        x2 = e.getX();
+        y2 = e.getY();
 
+        if (isMousePressed) {
             paint();
 
             x1 = x2;
@@ -54,8 +54,8 @@ public class Pencil extends AbstractTool {
         } else {
             isMousePressed = true;
 
-            x1 = x2 = e.getX();
-            y1 = y2 = e.getY();
+            x1 = x2;
+            y1 = y2;
 
             paint();
         }
