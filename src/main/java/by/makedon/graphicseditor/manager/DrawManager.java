@@ -25,9 +25,8 @@ public final class DrawManager {
 
     private DrawManager() {
         drawPanel = new DrawPanel();
-        tool = ToolManager.getInstance()
-                          .getTool(Pencil.class);
-        bufferedImage = initBufferedImage();
+        tool = ToolManager.getInstance().getTool(Pencil.class);
+        bufferedImage = createNewBufferedImage();
     }
 
     public static DrawManager getInstance() {
@@ -38,47 +37,38 @@ public final class DrawManager {
     }
 
     public void paint() {
-        drawPanel.getGraphics()
-                 .drawImage(bufferedImage, 0, 0, drawPanel);
+        drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
     }
 
     public void paint(BufferedImage bufferedImage) {
-        drawPanel.getGraphics()
-                 .drawImage(bufferedImage, 0, 0, drawPanel);
+        drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
     }
 
     public void clearDrawPanel() {
-        bufferedImage = initBufferedImage();
+        bufferedImage = createNewBufferedImage();
         paint();
     }
 
-    //TODO do with colorchooser
-    public Color getColor() {
-        return Color.black;
+    public Graphics2D getGraphics() {
+        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+        g.setColor(getColor());
+        g.setStroke(getStroke());
+        return g;
     }
 
-    //TODO with thickness param
-    public Stroke getStroke() {
-        return new BasicStroke(2.0f);
+    public Graphics2D getGraphics(BufferedImage bufferedImage) {
+        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+        g.setColor(getColor());
+        g.setStroke(getStroke());
+        return g;
     }
 
-    public DrawPanel getDrawPanel() {
-        return drawPanel;
+    public void copyOriginalImageTo(BufferedImage bufferedImage) {
+        bufferedImage.getGraphics()
+                     .drawImage(this.bufferedImage, 0, 0, null);
     }
 
-    public void setTool(Tool tool) {
-        this.tool = tool;
-    }
-
-    public Tool getTool() {
-        return tool;
-    }
-
-    public BufferedImage getBufferedImage() {
-        return bufferedImage;
-    }
-
-    private BufferedImage initBufferedImage() {
+    public BufferedImage createNewBufferedImage() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
@@ -100,6 +90,28 @@ public final class DrawManager {
         g.setRenderingHints(hints);
 
         return bufferedImage;
+    }
+
+    public DrawPanel getDrawPanel() {
+        return drawPanel;
+    }
+
+    public void setTool(Tool tool) {
+        this.tool = tool;
+    }
+
+    public Tool getTool() {
+        return tool;
+    }
+
+    //TODO do with colorchooser
+    private Color getColor() {
+        return Color.black;
+    }
+
+    //TODO with thickness param
+    private Stroke getStroke() {
+        return new BasicStroke(2.0f);
     }
 
     private class DrawPanel extends JPanel {

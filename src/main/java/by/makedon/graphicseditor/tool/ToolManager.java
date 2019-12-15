@@ -2,6 +2,7 @@ package by.makedon.graphicseditor.tool;
 
 import by.makedon.graphicseditor.tool.impl.Line;
 import by.makedon.graphicseditor.tool.impl.Pencil;
+import by.makedon.graphicseditor.tool.impl.Quadrangle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,7 @@ public final class ToolManager {
         toolMap = new HashMap<>();
         toolMap.put(Pencil.class, new Pencil());
         toolMap.put(Line.class, new Line());
+        toolMap.put(Quadrangle.class, new Quadrangle());
     }
 
     public static ToolManager getInstance() {

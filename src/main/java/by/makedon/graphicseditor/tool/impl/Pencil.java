@@ -67,17 +67,11 @@ public class Pencil extends AbstractTool {
     }
 
     private void paint() {
-        Graphics2D g = (Graphics2D) DrawManager.getInstance()
-                                               .getBufferedImage()
-                                               .getGraphics();
+        drawLine(DrawManager.getInstance().getGraphics());
+        DrawManager.getInstance().paint();
+    }
 
-        g.setColor(DrawManager.getInstance()
-                              .getColor());
-        g.setStroke(DrawManager.getInstance()
-                               .getStroke());
+    private void drawLine(Graphics2D g) {
         g.drawLine(x1, y1, x2, y2);
-
-        DrawManager.getInstance()
-                   .paint();
     }
 }

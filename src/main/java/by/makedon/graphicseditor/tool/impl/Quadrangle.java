@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 /**
  * @author Yahor Makedon
  */
-public class Line extends AbstractTool {
+public class Quadrangle extends AbstractTool {
     private boolean isMousePressed;
     private int x1, x2, y1, y2;
     private BufferedImage savedBufferedImage;
@@ -24,7 +24,7 @@ public class Line extends AbstractTool {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        drawLine(DrawManager.getInstance().getGraphics());
+        drawRect(DrawManager.getInstance().getGraphics());
         DrawManager.getInstance().paint();
 
         init();
@@ -32,12 +32,12 @@ public class Line extends AbstractTool {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        //TODO cursor drawPanel.setCursor(cursor);
+        //TODO drawPanel.setCursor(cursor);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        //TODO cursor drawPanel.setCursor(cursor);
+        //TODO drawPanel.setCursor(cursor);
     }
 
     @Override
@@ -59,16 +59,24 @@ public class Line extends AbstractTool {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        //TODO cursor drawPanel.setCursor(cursor);
+        //TODO drawPanel.setCursor(cursor);
     }
 
     private void paint() {
         DrawManager.getInstance().copyOriginalImageTo(savedBufferedImage);
-        drawLine(DrawManager.getInstance().getGraphics(savedBufferedImage));
+        drawRect(DrawManager.getInstance().getGraphics(savedBufferedImage));
         DrawManager.getInstance().paint(savedBufferedImage);
     }
 
-    private void drawLine(Graphics2D g) {
-        g.drawLine(x1, y1, x2, y2);
+    private void drawRect(Graphics2D g) {
+        if (x1 < x2 && y1 < y2) {
+            g.drawRect(x1, y1, x2 - x1, y2 - y1);
+        } else if (x1 < x2 && y1 > y2) {
+            g.drawRect(x1, y2, x2 - x1, y1 - y2);
+        } else if (x1 > x2 && y1 > y2) {
+            g.drawRect(x2, y2, x1 - x2, y1 - y2);
+        } else if (x1 > x2 && y1 < y2) {
+            g.drawRect(x2, y1, x1 - x2, y2 - y1);
+        }
     }
 }
