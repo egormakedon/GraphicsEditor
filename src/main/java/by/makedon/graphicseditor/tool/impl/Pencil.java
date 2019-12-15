@@ -10,14 +10,10 @@ import java.awt.event.MouseEvent;
  * @author Yahor Makedon
  */
 public class Pencil extends AbstractTool {
-    private boolean isMousePressed;
-    private int x1, x2, y1, y2;
-
-    @Override
-    public void init() {
-        isMousePressed = false;
-        x1 = x2 = y1 = y2 = 0;
-    }
+    private int x1;
+    private int y1;
+    private int x2;
+    private int y2;
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -27,8 +23,10 @@ public class Pencil extends AbstractTool {
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-        init();
+    public void mousePressed(MouseEvent e) {
+        x1 = x2 = e.getX();
+        y1 = y2 = e.getY();
+        paint();
     }
 
     @Override
@@ -45,25 +43,10 @@ public class Pencil extends AbstractTool {
     public void mouseDragged(MouseEvent e) {
         x2 = e.getX();
         y2 = e.getY();
+        paint();
 
-        if (isMousePressed) {
-            paint();
-
-            x1 = x2;
-            y1 = y2;
-        } else {
-            isMousePressed = true;
-
-            x1 = x2;
-            y1 = y2;
-
-            paint();
-        }
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        //TODO setting cursor: drawPanel.setCursor(cursor);
+        x1 = x2;
+        y1 = y2;
     }
 
     private void paint() {

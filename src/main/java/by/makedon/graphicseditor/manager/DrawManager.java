@@ -35,7 +35,7 @@ public final class DrawManager {
     }
 
     public void paint() {
-        drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
+        paint(bufferedImage);
     }
 
     public void paint(BufferedImage bufferedImage) {
@@ -48,10 +48,7 @@ public final class DrawManager {
     }
 
     public Graphics2D getGraphics() {
-        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
-        g.setColor(getColor());
-        g.setStroke(getStroke());
-        return g;
+        return getGraphics(bufferedImage);
     }
 
     public Graphics2D getGraphics(BufferedImage bufferedImage) {
