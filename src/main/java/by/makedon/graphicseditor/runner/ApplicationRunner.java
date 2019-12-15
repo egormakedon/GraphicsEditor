@@ -13,10 +13,12 @@ public class ApplicationRunner {
     private static final Logger logger = LoggerFactory.getLogger(ApplicationRunner.class);
 
     public static void main(String[] args) {
-        try {
-            SwingUtilities.invokeLater(() -> new Window().showWindow());
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-        }
+        SwingUtilities.invokeLater(() -> {
+            try {
+                new Window().showWindow();
+            } catch (Exception e) {
+                logger.error(e.getMessage(), e);
+            }
+        });
     }
 }

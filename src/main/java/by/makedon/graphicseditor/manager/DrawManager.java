@@ -10,8 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Yahor Makedon
@@ -74,21 +72,8 @@ public final class DrawManager {
         int screenHeight = (int) screenSize.getHeight();
 
         BufferedImage bufferedImage = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
-
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
         g.fillRect(0, 0, screenWidth, screenHeight);
-
-        Map<Object, Object> hints = new HashMap<>();
-        hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        hints.put(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        hints.put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        hints.put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        hints.put(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        hints.put(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-        g.setRenderingHints(hints);
-
         return bufferedImage;
     }
 
@@ -114,12 +99,8 @@ public final class DrawManager {
         return new BasicStroke(2.0f);
     }
 
-    private class DrawPanel extends JPanel {
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(bufferedImage, 0, 0, this);
-
+    private class DrawPanel extends JComponent {
+        private DrawPanel() {
             addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -158,6 +139,12 @@ public final class DrawManager {
                     tool.mouseMoved(e);
                 }
             });
+        }
+
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(bufferedImage, 0, 0, this);
         }
     }
 }
