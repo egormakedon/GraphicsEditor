@@ -14,6 +14,7 @@ public class Pencil extends AbstractTool {
     private int y1;
     private int x2;
     private int y2;
+    //TODO add bufferImage
 
     @Override
     public void mouseClicked(MouseEvent e) {

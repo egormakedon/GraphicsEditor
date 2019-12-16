@@ -1,5 +1,6 @@
 package by.makedon.graphicseditor.tool;
 
+import by.makedon.graphicseditor.tool.impl.Circle;
 import by.makedon.graphicseditor.tool.impl.Line;
 import by.makedon.graphicseditor.tool.impl.Pencil;
 import by.makedon.graphicseditor.tool.impl.Quadrangle;
@@ -20,6 +21,7 @@ public final class ToolManager {
         toolMap.put(Pencil.class, new Pencil());
         toolMap.put(Line.class, new Line());
         toolMap.put(Quadrangle.class, new Quadrangle());
+        toolMap.put(Circle.class, new Circle());
     }
 
     public static ToolManager getInstance() {
