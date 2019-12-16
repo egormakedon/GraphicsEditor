@@ -34,7 +34,6 @@ public final class ToolManager {
         if (tool == null) {
             throw new NullPointerException("Tool shouldn't be null");
         } else {
-            tool.init();
             return tool;
         }
     }

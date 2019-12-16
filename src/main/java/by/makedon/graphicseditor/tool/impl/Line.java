@@ -11,15 +11,19 @@ import java.awt.image.BufferedImage;
  * @author Yahor Makedon
  */
 public class Line extends AbstractTool {
-    private boolean isMousePressed;
-    private int x1, x2, y1, y2;
+    private int x1;
+    private int y1;
+    private int x2;
+    private int y2;
     private BufferedImage savedBufferedImage;
 
     @Override
-    public void init() {
-        isMousePressed = false;
-        x1 = x2 = y1 = y2 = 0;
-        savedBufferedImage = null;
+    public void mousePressed(MouseEvent e) {
+        savedBufferedImage = DrawManager.getInstance().createNewBufferedImage();
+
+        x1 = x2 = e.getX();
+        y1 = y2 = e.getY();
+        paint();
     }
 
     @Override
@@ -27,7 +31,7 @@ public class Line extends AbstractTool {
         drawLine(DrawManager.getInstance().getGraphics());
         DrawManager.getInstance().paint();
 
-        init();
+        savedBufferedImage = null;
     }
 
     @Override
@@ -44,22 +48,7 @@ public class Line extends AbstractTool {
     public void mouseDragged(MouseEvent e) {
         x2 = e.getX();
         y2 = e.getY();
-
-        if (!isMousePressed) {
-            isMousePressed = true;
-
-            savedBufferedImage = DrawManager.getInstance().createNewBufferedImage();
-
-            x1 = x2;
-            y1 = y2;
-        }
-
         paint();
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        //TODO cursor drawPanel.setCursor(cursor);
     }
 
     private void paint() {
