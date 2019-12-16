@@ -20,11 +20,13 @@ public final class DrawManager {
     private DrawPanel drawPanel;
     private Tool tool;
     private BufferedImage bufferedImage;
+    private Color color;
 
     private DrawManager() {
         drawPanel = new DrawPanel();
         tool = ToolManager.getInstance().getTool(Pencil.class);
         bufferedImage = createNewBufferedImage();
+        color = Color.BLACK;
     }
 
     public static DrawManager getInstance() {
@@ -86,9 +88,12 @@ public final class DrawManager {
         return tool;
     }
 
-    //TODO do with colorchooser
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     private Color getColor() {
-        return Color.black;
+        return color;
     }
 
     //TODO with thickness param
@@ -96,7 +101,7 @@ public final class DrawManager {
         return new BasicStroke(2.0f);
     }
 
-    private class DrawPanel extends JComponent {
+    private final class DrawPanel extends JComponent {
         private DrawPanel() {
             addMouseListener(new MouseListener() {
                 @Override

@@ -20,6 +20,9 @@ public final class Constants {
     public static final String TOOLS_MENU_NAME = "tools.menu.name";
     public static final String TOOLS_MENU_ICON_PATH = "tools.menu.icon.path";
 
+    public static final String COLOR_MENU_NAME = "color.menu.name";
+    public static final String COLOR_MENU_ICON_PATH = "color.menu.icon.path";
+
     public static final String OPEN_MENU_ITEM_NAME = "open.menu.item.name";
     public static final String OPEN_MENU_ITEM_ICON_PATH = "open.menu.item.icon.path";
 

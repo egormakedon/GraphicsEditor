@@ -1,11 +1,11 @@
 package by.makedon.graphicseditor;
 
-import by.makedon.graphicseditor.tool.*;
+import by.makedon.graphicseditor.tool.Eraser;
+import by.makedon.graphicseditor.tool.Magnifier;
+import by.makedon.graphicseditor.tool.Selection;
+import by.makedon.graphicseditor.tool.Text;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,18 +14,12 @@ public class AddTools {
     private JPanel drawPanel;
 
     private JMenu toolsMenu = new JMenu("tools");
-    private JMenu colorMenu = new JMenu("color");
-    private JColorChooser colorChooser = new JColorChooser();
     private JMenu thicknessMenu = new JMenu("thickness 1x");
     private JMenu selectionMenu = new JMenu("selection");
 
     public AddTools(JPanel drawPanel) {
-        colorMenu.setIcon(new ImageIcon("images/colorMenu.png"));
         thicknessMenu.setIcon(new ImageIcon("images/thicknessMenu.png"));
         selectionMenu.setIcon(new ImageIcon("images/selection1.png"));
-
-        colorMenu.setForeground(Color.black);
-        colorChooser.setColor(Color.black);
 
         this.drawPanel = drawPanel;
     }
@@ -46,8 +40,6 @@ public class AddTools {
         toolsMenu.add(magnifier);
         toolsMenu.add(text);
 
-        colorMenu.add(colorChooser);
-
         thicknessMenu.add(thickness1x);
         thicknessMenu.add(thickness2x);
         thicknessMenu.add(thickness3x);
@@ -56,7 +48,6 @@ public class AddTools {
         selectionMenu.add(selection2);
 
         menuBar.add(toolsMenu);
-        menuBar.add(colorMenu);
         menuBar.add(thicknessMenu);
         menuBar.add(selectionMenu);
 
@@ -135,16 +126,6 @@ public class AddTools {
     public void setMenuFunction(JMenuItem thickness1x,
                                 JMenuItem thickness2x, JMenuItem thickness3x) {
 
-
-
-
-        colorMenu.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                colorMenu.setForeground(colorChooser.getColor());
-            }
-        });
-
         thickness1x.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,6 +150,4 @@ public class AddTools {
             }
         });
     }
-
-    public DrawManager getDrawManager() { return drawManager; }
 }
