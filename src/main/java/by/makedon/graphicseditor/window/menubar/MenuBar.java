@@ -4,6 +4,7 @@ import by.makedon.graphicseditor.util.Constants;
 import by.makedon.graphicseditor.util.ResourceUtil;
 import by.makedon.graphicseditor.window.menubar.colormenu.ColorMenu;
 import by.makedon.graphicseditor.window.menubar.mainmenu.MainMenu;
+import by.makedon.graphicseditor.window.menubar.thicknessmenu.ThicknessMenu;
 import by.makedon.graphicseditor.window.menubar.toolsmenu.ToolsMenu;
 
 import javax.swing.*;
@@ -25,5 +26,6 @@ public class MenuBar extends JMenuBar {
         add(new MainMenu());
         add(new ToolsMenu());
         add(new ColorMenu());
+        add(new ThicknessMenu());
     }
 }

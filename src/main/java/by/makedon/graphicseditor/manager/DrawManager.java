@@ -21,12 +21,14 @@ public final class DrawManager {
     private Tool tool;
     private BufferedImage bufferedImage;
     private Color color;
+    private int thickness;
 
     private DrawManager() {
         drawPanel = new DrawPanel();
         tool = ToolManager.getInstance().getTool(Pencil.class);
         bufferedImage = createNewBufferedImage();
         color = Color.BLACK;
+        //TODO thickness start value
     }
 
     public static DrawManager getInstance() {
@@ -96,9 +98,12 @@ public final class DrawManager {
         return color;
     }
 
-    //TODO with thickness param
+    public void setThickness(int thickness) {
+        this.thickness = thickness;
+    }
+
     private Stroke getStroke() {
-        return new BasicStroke(2.0f);
+        return new BasicStroke(thickness);
     }
 
     private final class DrawPanel extends JComponent {

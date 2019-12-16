@@ -14,11 +14,9 @@ public class AddTools {
     private JPanel drawPanel;
 
     private JMenu toolsMenu = new JMenu("tools");
-    private JMenu thicknessMenu = new JMenu("thickness 1x");
     private JMenu selectionMenu = new JMenu("selection");
 
     public AddTools(JPanel drawPanel) {
-        thicknessMenu.setIcon(new ImageIcon("images/thicknessMenu.png"));
         selectionMenu.setIcon(new ImageIcon("images/selection1.png"));
 
         this.drawPanel = drawPanel;
@@ -40,18 +38,12 @@ public class AddTools {
         toolsMenu.add(magnifier);
         toolsMenu.add(text);
 
-        thicknessMenu.add(thickness1x);
-        thicknessMenu.add(thickness2x);
-        thicknessMenu.add(thickness3x);
-
         selectionMenu.add(selection1);
         selectionMenu.add(selection2);
 
         menuBar.add(toolsMenu);
-        menuBar.add(thicknessMenu);
         menuBar.add(selectionMenu);
 
-        setMenuFunction(thickness1x, thickness2x, thickness3x);
         setItemFunction(eraser, text, selection1, selection2, magnifier);
     }
 
@@ -121,33 +113,5 @@ public class AddTools {
         item.setText(name);
 
         return item;
-    }
-
-    public void setMenuFunction(JMenuItem thickness1x,
-                                JMenuItem thickness2x, JMenuItem thickness3x) {
-
-        thickness1x.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.setThickness(1);
-                thicknessMenu.setText("thickness 1x");
-            }
-        });
-
-        thickness2x.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.setThickness(2);
-                thicknessMenu.setText("thickness 2x");
-            }
-        });
-
-        thickness3x.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                drawManager.setThickness(3);
-                thicknessMenu.setText("thickness 3x");
-            }
-        });
     }
 }
