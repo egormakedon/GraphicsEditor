@@ -1,4 +1,4 @@
-package by.makedon.graphicseditor.tool;
+package by.makedon.graphicseditor;
 
 import by.makedon.graphicseditor.DrawManager;
 

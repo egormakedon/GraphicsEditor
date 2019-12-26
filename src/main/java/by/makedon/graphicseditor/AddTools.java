@@ -1,10 +1,5 @@
 package by.makedon.graphicseditor;
 
-import by.makedon.graphicseditor.tool.Eraser;
-import by.makedon.graphicseditor.tool.Magnifier;
-import by.makedon.graphicseditor.tool.Selection;
-import by.makedon.graphicseditor.tool.Text;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

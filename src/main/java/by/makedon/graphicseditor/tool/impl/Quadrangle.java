@@ -1,6 +1,5 @@
 package by.makedon.graphicseditor.tool.impl;
 
-import by.makedon.graphicseditor.manager.DrawManager;
 import by.makedon.graphicseditor.tool.AbstractTool;
 
 import java.awt.*;
@@ -19,7 +18,7 @@ public class Quadrangle extends AbstractTool {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        savedBufferedImage = DrawManager.getInstance().createNewBufferedImage();
+        savedBufferedImage = createBufferedImage();
 
         x1 = x2 = e.getX();
         y1 = y2 = e.getY();
@@ -28,8 +27,8 @@ public class Quadrangle extends AbstractTool {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        drawRect(DrawManager.getInstance().getGraphics());
-        DrawManager.getInstance().paint();
+        drawRect(getGraphics2D());
+        drawImage();
 
         savedBufferedImage = null;
     }
@@ -52,9 +51,9 @@ public class Quadrangle extends AbstractTool {
     }
 
     private void paint() {
-        DrawManager.getInstance().copyOriginalImageTo(savedBufferedImage);
-        drawRect(DrawManager.getInstance().getGraphics(savedBufferedImage));
-        DrawManager.getInstance().paint(savedBufferedImage);
+        copyOriginalImageTo(savedBufferedImage);
+        drawRect(getGraphics2D(savedBufferedImage));
+        drawImage(savedBufferedImage);
     }
 
     private void drawRect(Graphics2D g) {

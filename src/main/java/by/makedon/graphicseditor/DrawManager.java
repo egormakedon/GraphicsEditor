@@ -4,9 +4,17 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 public class DrawManager {
+
+    private Cursors cursors = new Cursors();
     private JPanel drawPanel;
+    private JColorChooser colorChooser;
     private BufferedImage bufferedImage;
+    private int thickness = 1;
     private double zoom = 1;
+
+    public void setThickness(int thickness) {
+        this.thickness = thickness;
+    }
 
     public void removeListeners() {
         drawPanel.removeMouseListener(drawPanel.getMouseListeners()[0]);
@@ -14,11 +22,11 @@ public class DrawManager {
     }
 
     public void setNewBuf(BufferedImage buf, double zoom) {
-       if (zoom == 1) {
-           bufferedImage = scale(buf,1 / this.zoom);
-           this.zoom = zoom;
-           return;
-       }
+        if (zoom == 1) {
+            bufferedImage = scale(buf,1 / this.zoom);
+            this.zoom = zoom;
+            return;
+        }
 
         if (zoom == 2) {
             bufferedImage = scale(buf,1 / this.zoom);
@@ -52,4 +60,10 @@ public class DrawManager {
 
         return res;
     }
+
+    public Cursors getCursors() { return cursors; }
+    public JPanel getDrawPanel() { return drawPanel; }
+    public JColorChooser getColorChooser() { return colorChooser; }
+    public BufferedImage getBufferedImage() { return bufferedImage; }
+    public int getThickness() { return thickness; }
 }

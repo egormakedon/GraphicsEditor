@@ -17,16 +17,16 @@ import java.awt.image.BufferedImage;
 public final class DrawManager {
     private static DrawManager instance;
 
-    private DrawPanel drawPanel;
-    private Tool tool;
+    private JComponent drawPanel;
     private BufferedImage bufferedImage;
+    private Tool tool;
     private Color color;
     private int thickness;
 
     private DrawManager() {
         drawPanel = new DrawPanel();
+        bufferedImage = createBufferedImage();
         tool = ToolManager.getInstance().getTool(Pencil.class);
-        bufferedImage = createNewBufferedImage();
         color = Color.BLACK;
         //TODO thickness start value
     }
@@ -38,48 +38,32 @@ public final class DrawManager {
         return instance;
     }
 
-    public void paint() {
-        paint(bufferedImage);
+    public void clearDrawPanel() {
+        bufferedImage = createBufferedImage();
+        drawImage();
     }
 
-    public void paint(BufferedImage bufferedImage) {
+    public void drawImage() {
+        drawImage(bufferedImage);
+    }
+
+    public void drawImage(BufferedImage bufferedImage) {
         drawPanel.getGraphics().drawImage(bufferedImage, 0, 0, drawPanel);
     }
 
-    public void clearDrawPanel() {
-        bufferedImage = createNewBufferedImage();
-        paint();
-    }
-
-    public Graphics2D getGraphics() {
-        return getGraphics(bufferedImage);
-    }
-
-    public Graphics2D getGraphics(BufferedImage bufferedImage) {
-        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
-        g.setColor(getColor());
-        g.setStroke(getStroke());
-        return g;
-    }
-
-    public void copyOriginalImageTo(BufferedImage bufferedImage) {
-        bufferedImage.getGraphics()
-                     .drawImage(this.bufferedImage, 0, 0, null);
-    }
-
-    public BufferedImage createNewBufferedImage() {
+    public BufferedImage createBufferedImage() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
-
-        BufferedImage bufferedImage = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
-        g.fillRect(0, 0, screenWidth, screenHeight);
-        return bufferedImage;
+        return new CustomBufferedImage(screenWidth, screenHeight);
     }
 
-    public DrawPanel getDrawPanel() {
+    public JComponent getDrawPanel() {
         return drawPanel;
+    }
+
+    public BufferedImage getBufferedImage() {
+        return bufferedImage;
     }
 
     public void setTool(Tool tool) {
@@ -94,16 +78,23 @@ public final class DrawManager {
         this.color = color;
     }
 
-    private Color getColor() {
-        return color;
-    }
-
     public void setThickness(int thickness) {
         this.thickness = thickness;
     }
 
-    private Stroke getStroke() {
-        return new BasicStroke(thickness);
+    private final class CustomBufferedImage extends BufferedImage {
+        private CustomBufferedImage(int screenWidth, int screenHeight) {
+            super(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
+            getGraphics().fillRect(0, 0, screenWidth, screenHeight);
+        }
+
+        @Override
+        public Graphics getGraphics() {
+            Graphics2D g = (Graphics2D) super.getGraphics();
+            g.setColor(color);
+            g.setStroke(new BasicStroke(thickness));
+            return g;
+        }
     }
 
     private final class DrawPanel extends JComponent {

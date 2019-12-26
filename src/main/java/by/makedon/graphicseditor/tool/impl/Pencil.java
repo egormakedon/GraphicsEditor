@@ -1,6 +1,5 @@
 package by.makedon.graphicseditor.tool.impl;
 
-import by.makedon.graphicseditor.manager.DrawManager;
 import by.makedon.graphicseditor.tool.AbstractTool;
 
 import java.awt.*;
@@ -50,8 +49,8 @@ public class Pencil extends AbstractTool {
     }
 
     private void paint() {
-        drawLine(DrawManager.getInstance().getGraphics());
-        DrawManager.getInstance().paint();
+        drawLine(getGraphics2D());
+        drawImage();
     }
 
     private void drawLine(Graphics2D g) {
