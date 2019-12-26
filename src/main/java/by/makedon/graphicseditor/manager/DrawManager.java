@@ -3,6 +3,8 @@ package by.makedon.graphicseditor.manager;
 import by.makedon.graphicseditor.tool.Tool;
 import by.makedon.graphicseditor.tool.ToolManager;
 import by.makedon.graphicseditor.tool.impl.Pencil;
+import by.makedon.graphicseditor.util.Constants;
+import by.makedon.graphicseditor.util.ResourceUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +30,7 @@ public final class DrawManager {
         bufferedImage = createBufferedImage();
         tool = ToolManager.getInstance().getTool(Pencil.class);
         color = Color.BLACK;
-        //TODO thickness start value
+        thickness = Integer.parseInt(ResourceUtil.getPropertyValue(Constants.THICKNESS_VALUE));
     }
 
     public static DrawManager getInstance() {
@@ -85,7 +87,7 @@ public final class DrawManager {
     private final class CustomBufferedImage extends BufferedImage {
         private CustomBufferedImage(int screenWidth, int screenHeight) {
             super(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
-            getGraphics().fillRect(0, 0, screenWidth, screenHeight);
+            super.getGraphics().fillRect(0, 0, screenWidth, screenHeight);
         }
 
         @Override
@@ -93,6 +95,11 @@ public final class DrawManager {
             Graphics2D g = (Graphics2D) super.getGraphics();
             g.setColor(color);
             g.setStroke(new BasicStroke(thickness));
+
+//            Map<Object, Object> hints = new HashMap<>();
+//            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//            g.setRenderingHints(hints);
+
             return g;
         }
     }
@@ -143,6 +150,10 @@ public final class DrawManager {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             g.drawImage(bufferedImage, 0, 0, this);
+
+//            Map<Object, Object> hints = new HashMap<>();
+//            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//            ((Graphics2D)g).setRenderingHints(hints);
         }
     }
 }
