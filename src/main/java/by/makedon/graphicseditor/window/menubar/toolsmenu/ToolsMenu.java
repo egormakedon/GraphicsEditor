@@ -3,10 +3,7 @@ package by.makedon.graphicseditor.window.menubar.toolsmenu;
 import by.makedon.graphicseditor.util.Constants;
 import by.makedon.graphicseditor.util.ResourceUtil;
 import by.makedon.graphicseditor.window.menubar.AbstractMenu;
-import by.makedon.graphicseditor.window.menubar.toolsmenu.item.CircleMenuItem;
-import by.makedon.graphicseditor.window.menubar.toolsmenu.item.LineMenuItem;
-import by.makedon.graphicseditor.window.menubar.toolsmenu.item.PencilMenuItem;
-import by.makedon.graphicseditor.window.menubar.toolsmenu.item.QuadrangleMenuItem;
+import by.makedon.graphicseditor.window.menubar.toolsmenu.item.*;
 
 /**
  * @author Yahor Makedon
@@ -23,5 +20,7 @@ public class ToolsMenu extends AbstractMenu {
         add(new LineMenuItem(this));
         add(new QuadrangleMenuItem(this));
         add(new CircleMenuItem(this));
+        addSeparator();
+        add(new EraserMenuItem(this));
     }
 }

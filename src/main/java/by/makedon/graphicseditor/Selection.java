@@ -1,7 +1,5 @@
 package by.makedon.graphicseditor;
 
-import by.makedon.graphicseditor.DrawManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,6 +7,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Selection {
+
+//    JMenuItem selection1 = setToolItem("images/selection1.png", "rectangle");
+//    JMenuItem selection2 = setToolItem("images/selection2.png", "arbitrary");
 
     private Cursor cursor;
     private JPanel drawPanel;

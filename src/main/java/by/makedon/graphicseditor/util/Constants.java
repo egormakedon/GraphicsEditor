@@ -55,6 +55,9 @@ public final class Constants {
     public static final String CIRCLE_MENU_ITEM_NAME = "circle.menu.item.name";
     public static final String CIRCLE_MENU_ITEM_ICON_PATH = "circle.menu.item.icon.path";
 
+    public static final String ERASER_MENU_ITEM_NAME = "eraser.menu.item.name";
+    public static final String ERASER_MENU_ITEM_ICON_PATH = "eraser.menu.item.icon.path";
+
     private Constants() {
     }
 }
