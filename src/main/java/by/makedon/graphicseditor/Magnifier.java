@@ -1,22 +1,19 @@
-package by.makedon.graphicseditor.tools;
-
-import by.makedon.graphicseditor.DrawManager;
+package by.makedon.graphicseditor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class Eraser {
+public class Magnifier {
 
     private Cursor cursor;
     private JPanel drawPanel;
     private DrawManager drawManager;
 
-    private boolean isPressed = false;
-    private int x1, x2, y1, y2;
-
-    public Eraser(DrawManager drawManager) {
-        cursor = drawManager.getCursors().getEraserCursor();
+    public Magnifier(DrawManager drawManager) {
+        cursor = drawManager.getCursors().getMagnifierCursor();
         drawPanel = drawManager.getDrawPanel();
 
         this.drawManager = drawManager;
@@ -25,19 +22,7 @@ public class Eraser {
     private MouseMotionListener mouseMotionListener = new MouseMotionListener() {
         @Override
         public void mouseDragged(MouseEvent e) {
-            if (!isPressed) {
-                x1 = e.getX();
-                y1 = e.getY();
-            }
 
-            isPressed = true;
-            x2 = e.getX();
-            y2 = e.getY();
-
-            paint();
-
-            x1 = e.getX();
-            y1 = e.getY();
         }
 
         @Override
@@ -49,19 +34,22 @@ public class Eraser {
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            x1 = e.getX();
-            y1 = e.getY();
-            paint();
+
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
+            drawManager.setNewBuf(drawManager.getBufferedImage(), drawManager.getThickness());
 
+            drawPanel.setSize(new Dimension(drawManager.getBufferedImage().getWidth(), drawManager.getBufferedImage().getHeight()));
+            drawPanel.setPreferredSize(new Dimension(drawManager.getBufferedImage().getWidth(), drawManager.getBufferedImage().getHeight()));
+
+            drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            isPressed = false;
+
         }
 
         @Override
@@ -74,23 +62,6 @@ public class Eraser {
 
         }
     };
-
-    public void paint() {
-        Graphics2D g = (Graphics2D) drawManager.getBufferedImage().getGraphics();
-
-        g.setColor(Color.white);
-        g.setStroke(new BasicStroke(drawManager.getThickness() * 20.0f));
-
-        if (isPressed) {
-            g.drawLine(x1, y1, x2, y2);
-        }
-
-        else {
-            g.drawLine(x1, y1, x1, y1);
-        }
-
-        drawPanel.getGraphics().drawImage(drawManager.getBufferedImage(),0,0, drawPanel);
-    }
 
     public MouseMotionListener getMouseMotionListener() { return mouseMotionListener; }
     public MouseListener getMouseListener() { return mouseListener; }

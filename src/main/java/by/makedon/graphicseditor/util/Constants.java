@@ -20,6 +20,17 @@ public final class Constants {
     public static final String TOOLS_MENU_NAME = "tools.menu.name";
     public static final String TOOLS_MENU_ICON_PATH = "tools.menu.icon.path";
 
+    public static final String COLOR_MENU_NAME = "color.menu.name";
+    public static final String COLOR_MENU_ICON_PATH = "color.menu.icon.path";
+
+    public static final String THICKNESS_MENU_WIDTH = "thickness.menu.width";
+    public static final String THICKNESS_MENU_HEIGHT = "thickness.menu.height";
+    public static final String THICKNESS_MENU_BACKGROUND_COLOR = "thickness.menu.background.color";
+    public static final String THICKNESS_MENU_FOREGROUND_COLOR = "thickness.menu.foreground.color";
+    public static final String THICKNESS_MIN_VALUE = "thickness.min.value";
+    public static final String THICKNESS_MAX_VALUE = "thickness.max.value";
+    public static final String THICKNESS_VALUE = "thickness.value";
+
     public static final String OPEN_MENU_ITEM_NAME = "open.menu.item.name";
     public static final String OPEN_MENU_ITEM_ICON_PATH = "open.menu.item.icon.path";
 
@@ -43,6 +54,9 @@ public final class Constants {
 
     public static final String CIRCLE_MENU_ITEM_NAME = "circle.menu.item.name";
     public static final String CIRCLE_MENU_ITEM_ICON_PATH = "circle.menu.item.icon.path";
+
+    public static final String ERASER_MENU_ITEM_NAME = "eraser.menu.item.name";
+    public static final String ERASER_MENU_ITEM_ICON_PATH = "eraser.menu.item.icon.path";
 
     private Constants() {
     }

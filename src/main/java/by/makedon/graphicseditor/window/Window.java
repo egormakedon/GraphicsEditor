@@ -1,5 +1,6 @@
 package by.makedon.graphicseditor.window;
 
+import by.makedon.graphicseditor.manager.DrawManager;
 import by.makedon.graphicseditor.util.Constants;
 import by.makedon.graphicseditor.util.ResourceUtil;
 import by.makedon.graphicseditor.window.menubar.MenuBar;
@@ -23,25 +24,10 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
 
         setJMenuBar(new MenuBar());
+        add(new JScrollPane(DrawManager.getInstance().getDrawPanel()), BorderLayout.CENTER);
     }
 
     public void showWindow() {
         setVisible(true);
     }
-
-    private void createJFrame() {
-//        JPanel drawPanel = new NewPanel();
-//        JScrollPane scrollPane = new JScrollPane(drawPanel);
-//        frame.add(scrollPane, BorderLayout.CENTER);
-//        addTools = new AddTools(drawPanel);
-//        addTools.setBars(menuBar, toolBar);
-    }
-
-//    public class NewPanel extends JPanel {
-//        @Override
-//        public void paintComponent(Graphics g) {
-//            super.paintComponent(g);
-//            g.drawImage(addTools.getDrawManager().getBufferedImage(),0,0,this);
-//        }
-//    }
 }
